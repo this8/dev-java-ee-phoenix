@@ -20,6 +20,7 @@
                     <option value="takeoff_date">Takeoff Date</option>
                     <option value="landing_date">Landing Date</option>
                     <option value="landing_airport">Landing Airport</option>
+                    <option value="takeoff_airport">Takeoff Airport</option>
                 </select>
                 <input type="submit" name="Search"/>
                 <input type="reset" name="Cancel"/>

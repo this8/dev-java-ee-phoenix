@@ -151,7 +151,11 @@ public class FlightDao {
             resultSet = statement.executeQuery("select * from flight where landing_date like'%" + searchValue + "%';");
         } else if (searchCategory.equals("landing_airport")) {
             resultSet = statement.executeQuery("select * from flight where landing_airport like'%" + searchValue + "%';");
-        }
+        }else if(searchCategory.equals("takeoff_airport")){
+            resultSet = statement.executeQuery("select * from flight where takeoff_airport like'%" + searchValue + "%';");
+        }else{
+            
+        } 
 
         while (resultSet.next()) {
             int flight_id = resultSet.getInt("flight_id");

@@ -27,24 +27,28 @@ public class SearchFlightInfoServlet extends HttpServlet {
     public SearchFlightInfoServlet() {
         super();
     }
-
+    
+    
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+             {
+        
         try {
             String searchValue = request.getParameter("searchData");
-            String searchCategory = request.getParameter("searchCategory");
-
+            String searchCategory=request.getParameter("searchCategory");
+            
             FlightDao flightDao = new FlightDao();
-            List SearchFlightDetails = flightDao.searchData(searchValue, searchCategory);
-
+            List SearchFlightDetails = flightDao.searchData(searchValue,searchCategory);
+            
             request.setAttribute("result", SearchFlightDetails);
-
+            
             RequestDispatcher rd = request.getRequestDispatcher("ResultsSearchFlights.jsp");
             rd.forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(SearchFlightInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }
+
     }
 
-}
+ 
