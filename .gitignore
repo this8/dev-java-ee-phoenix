@@ -42,7 +42,7 @@ nb-configuration.xml
 .classpath
 .project
 
-# Misc
+# Misc #
 *.swp
 release.properties
 pom.xml.releaseBackup
