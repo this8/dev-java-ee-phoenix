@@ -5,13 +5,14 @@
 package com.phoenixairline.controllers.ticketmanagement;
 
 import com.phoenixairline.models.Ticket;
-import com.phoenixairline.models.TicketDao;
+import com.phoenixairline.models.TicketDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,12 +32,12 @@ public class UpdateTicketServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateTicketServlet</title>");            
+            out.println("<title>Servlet UpdateTicketServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet UpdateTicketServlet at " + request.getContextPath() + "</h1>");
@@ -78,9 +79,13 @@ public class UpdateTicketServlet extends HttpServlet {
         String date = request.getParameter("date");
         String classType = request.getParameter("class");
         int seats = Integer.parseInt(request.getParameter("seats"));
-        
-        Ticket ticketBean = new Ticket(bookingId,userId,fhacId,passportNumber,date,classType,seats);
-        TicketDao updateTicket = new TicketDao();
+
+        HttpSession session = request.getSession();
+        userId = (int) session.getAttribute("user_id");
+        System.out.println("user id from session " + userId);
+
+        Ticket ticketBean = new Ticket(bookingId, userId, fhacId, passportNumber, date, classType, seats);
+        TicketDAO updateTicket = new TicketDAO();
         String updateResult = updateTicket.updateTicket(ticketBean);
         PrintWriter out = response.getWriter();
         out.println(updateResult);

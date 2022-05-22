@@ -1,7 +1,7 @@
 package com.phoenixairline.controllers.FlightControllers;
 
 import com.phoenixairline.models.Flight;
-import com.phoenixairline.models.FlightDao;
+import com.phoenixairline.models.FlightDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -33,13 +33,13 @@ public class AddFlightInfoServlet extends HttpServlet {
         String Landing_date = request.getParameter("landing_date");
 
         Flight flightBean = new Flight(FlightId, Gate, Takeoff_airport, Takeoff_time, Takeoff_date, Landing_airport, Landing_time, Landing_date);
-        FlightDao flightDao = new FlightDao();
+        FlightDAO flightDAO = new FlightDAO();
 
-        String result = flightDao.InsertFlightDetails(flightBean);
+        String result = flightDAO.InsertFlightDetails(flightBean);
         PrintWriter out = response.getWriter();
         out.println(result);
 
-        /*String result = registerDao.Registerindb(registerBean);
+        /*String result = registerDAO.Registerindb(registerBean);
              if (result.equals("User is registered")) {
              RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
              dispatcher.include(request, response);

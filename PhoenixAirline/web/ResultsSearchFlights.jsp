@@ -51,10 +51,6 @@
                         <td><input type="text" name="aircraftNumber" value="" required/></td>
                     </tr>
                     <tr>
-                        <td>Gate</td>
-                        <td><input type="text" name="gate" value="" /></td>
-                    </tr>
-                    <tr>
                         <td>Class</td>
                         <td><select name="class" required>
                                 <option value="business">Business</option>

@@ -1,7 +1,7 @@
 package com.phoenixairline.controllers.FlightControllers;
 
 import com.phoenixairline.models.Flight;
-import com.phoenixairline.models.FlightDao;
+import com.phoenixairline.models.FlightDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,9 +32,9 @@ public class UpdateFlightInfoServlet extends HttpServlet {
         String Landing_date = request.getParameter("landing_date");
 
         Flight flightBean = new Flight(FlightId, Gate, Takeoff_airport, Takeoff_time, Takeoff_date, Landing_airport, Landing_time, Landing_date);
-        FlightDao flightDao = new FlightDao();
+        FlightDAO flightDAO = new FlightDAO();
 
-        String result = flightDao.UpdateFlightDetails(flightBean);
+        String result = flightDAO.UpdateFlightDetails(flightBean);
         PrintWriter out = response.getWriter();
         out.println(result);
     }
