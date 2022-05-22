@@ -4,7 +4,7 @@
  */
 package com.phoenixairline.controllers.FlightControllers;
 
-import com.phoenixairline.models.FlightDAO;
+import com.phoenixairline.models.FlightAccess;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -35,8 +35,8 @@ public class SearchFlightInfoServlet extends HttpServlet {
             String searchValue = request.getParameter("searchData");
             String searchCategory = request.getParameter("searchCategory");
 
-            FlightDAO flightDAO = new FlightDAO();
-            List SearchFlightDetails = flightDAO.searchData(searchValue, searchCategory);
+            FlightAccess flightAccess = new FlightAccess();
+            List SearchFlightDetails = flightAccess.searchData(searchValue, searchCategory);
 
             request.setAttribute("result", SearchFlightDetails);
 

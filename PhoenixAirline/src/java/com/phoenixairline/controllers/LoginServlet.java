@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.phoenixairline.models.User;
-import com.phoenixairline.models.LoginDAO;
-import com.phoenixairline.models.SessionDAO;
+import com.phoenixairline.models.LoginAccess;
+import com.phoenixairline.models.SessionAccess;
 import com.phoenixairline.models.UserSession;
 
 public class LoginServlet extends HttpServlet {
@@ -28,14 +28,14 @@ public class LoginServlet extends HttpServlet {
         System.out.println("username password received");
 
         User loginBean = new User();
-        LoginDAO loginDAO = new LoginDAO();
+        LoginAccess loginAccess = new LoginAccess();
         loginBean.setUsername(username);
         loginBean.setPassword(password);
 
-        user_id = loginDAO.getUser_id(loginBean);
+        user_id = loginAccess.getUser_id(loginBean);
 
         UserSession sesBean = new UserSession();
-        SessionDAO sesDAO = new SessionDAO();
+        SessionAccess sesAccess = new SessionAccess();
 
         HttpSession session = request.getSession(); //Creating a session
         session.setAttribute("user_id", user_id);
@@ -44,13 +44,13 @@ public class LoginServlet extends HttpServlet {
         sesBean.setIp_address(ip);
         sesBean.setLogin_time(date.toString());
 
-        sesDAO.insertToDB(sesBean);
+        sesAccess.insertToDB(sesBean);
 
         System.out.println(ip);
         System.out.println("<h2>" + "Current Date & Time: " + date.toString() + "</h2>");
 
         try {
-            String userValidate = loginDAO.authenticateUser(loginBean);
+            String userValidate = loginAccess.authenticateUser(loginBean);
 
             switch (userValidate) {
                 case "Admin_Role": {

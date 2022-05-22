@@ -1,6 +1,6 @@
 package com.phoenixairline.controllers.ticketmanagement;
 
-import com.phoenixairline.models.TicketDAO;
+import com.phoenixairline.models.TicketAccess;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -21,7 +21,7 @@ public class SelectTicketServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        TicketDAO ticketDAO = new TicketDAO();
+        TicketAccess ticketAccess = new TicketAccess();
         //HttpSession session = request.getSession();
         int userId = 0; //session.getAttribute("user");
 
@@ -29,7 +29,7 @@ public class SelectTicketServlet extends HttpServlet {
         userId = (int) session.getAttribute("user_id");
         System.out.println("user id from session " + userId);
 
-        List reservationValues = ticketDAO.selectTicket(userId);
+        List reservationValues = ticketAccess.selectTicket(userId);
         request.setAttribute("reservationResult", reservationValues);
         RequestDispatcher rd = request.getRequestDispatcher("userMyReservation.jsp");
         rd.forward(request, response);

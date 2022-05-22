@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class LoginDAO {
+public class LoginAccess {
 
     public String authenticateUser(User loginBean) {
         String username = loginBean.getUsername();

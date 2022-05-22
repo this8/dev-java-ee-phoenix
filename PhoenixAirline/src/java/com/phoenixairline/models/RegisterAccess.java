@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class RegisterDAO {
+public class RegisterAccess {
 
     public String Registerindb(User registerBean) {
         Connection con = ConnectToDB.createConnection();
