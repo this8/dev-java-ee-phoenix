@@ -2,15 +2,15 @@ package com.phoenixairline.models;
 
 public class Ticket {
 
-    private String bookingId;
-    private String userId;
-    private String fhacId;
+    private int bookingId;
+    private int userId;
+    private int fhacId;
     private String passportNumber;
     private String bookingDate;    
     private String classType;
     private int numberOfSeats;
 
-    public Ticket(String bookingId, String userId, String fhacId, String passportNumber, String bookingDate, String classType, int numberOfSeats) {
+    public Ticket(int bookingId, int userId, int fhacId, String passportNumber, String bookingDate, String classType, int numberOfSeats) {
         this.bookingId = bookingId;
         this.userId = userId;
         this.fhacId = fhacId;
@@ -20,7 +20,7 @@ public class Ticket {
         this.numberOfSeats = numberOfSeats;
     }
     
-    public Ticket(String userId, String fhacId, String passportNumber, String bookingDate, String classType, int numberOfSeats) {
+    public Ticket(int userId, int fhacId, String passportNumber, String bookingDate, String classType, int numberOfSeats) {
         this.userId = userId;
         this.fhacId = fhacId;
         this.passportNumber = passportNumber;
@@ -28,49 +28,49 @@ public class Ticket {
         this.classType = classType;
         this.numberOfSeats = numberOfSeats;
     }
-public Ticket(String bookingId) {
+public Ticket(int bookingId) {
         this.bookingId = bookingId;
     }
     
     /**
      * @return the bookingId
      */
-    public String getBookingId() {
+    public int getBookingId() {
         return bookingId;
     }
 
     /**
      * @param bookingId the bookingId to set
      */
-    public void setBookingId(String bookingId) {
+    public void setBookingId(int bookingId) {
         this.bookingId = bookingId;
     }
 
     /**
      * @return the userId
      */
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
     /**
      * @param userId the userId to set
      */
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
     /**
      * @return the fhacId
      */
-    public String getFhacId() {
+    public int getFhacId() {
         return fhacId;
     }
 
     /**
      * @param fhacId the fhacId to set
      */
-    public void setFhacId(String fhacId) {
+    public void setFhacId(int fhacId) {
         this.fhacId = fhacId;
     }
 

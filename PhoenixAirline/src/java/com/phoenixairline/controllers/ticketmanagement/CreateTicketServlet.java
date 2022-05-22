@@ -15,8 +15,8 @@ public class CreateTicketServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String userId = "";//get user id from sesstion
-        String fhacId = "";//get fhacId from backend
+        int userId = 0;//get user id from sesstion
+        int fhacId = 0;//get fhacId from backend
         String passport = request.getParameter("passport");
         String date = request.getParameter("date");
         String classType = request.getParameter("class");

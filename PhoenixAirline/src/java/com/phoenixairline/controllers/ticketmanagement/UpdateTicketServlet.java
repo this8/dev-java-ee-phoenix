@@ -71,9 +71,9 @@ public class UpdateTicketServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String bookingId = request.getParameter("reservationId");
-        String userId = "";//get current userId and enter here
-        String fhacId = "";//get fhacId according booking table
+        int bookingId = Integer.parseInt(request.getParameter("reservationId"));
+        int userId = 0;//get current userId and enter here
+        int fhacId = 0;//get fhacId according booking table
         String passportNumber = request.getParameter("passportNumber");
         String date = request.getParameter("date");
         String classType = request.getParameter("class");
