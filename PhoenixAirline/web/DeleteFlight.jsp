@@ -16,9 +16,9 @@
         <div>
             <form method="post" action="DeleteFlightInfoServlet">
                 Enter Flight id to delete :<input type="text" name="flightId"/><br>
-                
-                
-               
+
+
+
                 <input type="submit" name="DeleteFlightRecord"/>
                 <input type="reset" name="Cancel"/>
             </form>

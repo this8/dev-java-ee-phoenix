@@ -17,6 +17,7 @@
     <body>
         <center><h2>Admin Home</h2></center>
         Welcome <%=session.getAttribute("admin")%>
+        Welcome <%=session.getAttribute("user_id")%>
         <div style="text-align: right"><a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a></div>
         <%
             if ((request.getAttribute("dc") == null)) {

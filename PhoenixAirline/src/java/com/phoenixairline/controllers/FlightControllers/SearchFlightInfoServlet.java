@@ -4,7 +4,7 @@
  */
 package com.phoenixairline.controllers.FlightControllers;
 
-import com.phoenixairline.models.FlightDao;
+import com.phoenixairline.models.FlightDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -27,28 +27,24 @@ public class SearchFlightInfoServlet extends HttpServlet {
     public SearchFlightInfoServlet() {
         super();
     }
-    
-    
+
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-             {
-        
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         try {
             String searchValue = request.getParameter("searchData");
-            String searchCategory=request.getParameter("searchCategory");
-            
-            FlightDao flightDao = new FlightDao();
-            List SearchFlightDetails = flightDao.searchData(searchValue,searchCategory);
-            
+            String searchCategory = request.getParameter("searchCategory");
+
+            FlightDAO flightDAO = new FlightDAO();
+            List SearchFlightDetails = flightDAO.searchData(searchValue, searchCategory);
+
             request.setAttribute("result", SearchFlightDetails);
-            
+
             RequestDispatcher rd = request.getRequestDispatcher("ResultsSearchFlights.jsp");
             rd.forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(SearchFlightInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        }
-
     }
 
- 
+}

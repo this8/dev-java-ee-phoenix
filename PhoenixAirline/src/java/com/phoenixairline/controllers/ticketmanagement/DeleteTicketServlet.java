@@ -30,12 +30,12 @@ public class DeleteTicketServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteTicketServlet</title>");            
+            out.println("<title>Servlet DeleteTicketServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet DeleteTicketServlet at " + request.getContextPath() + "</h1>");
@@ -71,9 +71,9 @@ public class DeleteTicketServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String bookingId = request.getParameter("bookingId");
-        
+
         TicketDelete ticketBean = new TicketDelete();
-        
+
         String deleteResult = ticketBean.DeleteTicket(bookingId);
         PrintWriter out = response.getWriter();
         out.println(deleteResult);

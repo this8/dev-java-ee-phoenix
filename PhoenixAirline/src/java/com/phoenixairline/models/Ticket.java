@@ -6,7 +6,7 @@ public class Ticket {
     private int userId;
     private int fhacId;
     private String passportNumber;
-    private String bookingDate;    
+    private String bookingDate;
     private String classType;
     private int numberOfSeats;
 
@@ -19,7 +19,7 @@ public class Ticket {
         this.classType = classType;
         this.numberOfSeats = numberOfSeats;
     }
-    
+
     public Ticket(int userId, int fhacId, String passportNumber, String bookingDate, String classType, int numberOfSeats) {
         this.userId = userId;
         this.fhacId = fhacId;
@@ -28,10 +28,11 @@ public class Ticket {
         this.classType = classType;
         this.numberOfSeats = numberOfSeats;
     }
-public Ticket(int bookingId) {
+
+    public Ticket(int bookingId) {
         this.bookingId = bookingId;
     }
-    
+
     /**
      * @return the bookingId
      */
@@ -129,9 +130,5 @@ public Ticket(int bookingId) {
     public void setNumberOfSeats(int numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
     }
-
-
-
-
 
 }

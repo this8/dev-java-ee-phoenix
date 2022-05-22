@@ -1,6 +1,6 @@
 package com.phoenixairline.controllers;
 
-import com.phoenixairline.models.SearchUsersDao;
+import com.phoenixairline.models.SearchUsersDAO;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -18,8 +18,8 @@ public class SearchUsersServlet extends HttpServlet {
         String st = request.getParameter("search_type");
 
 //       use referrer to get requested page
-        SearchUsersDao vuDao = new SearchUsersDao();
-        List userlist = vuDao.viewRow(su, st);
+        SearchUsersDAO vuDAO = new SearchUsersDAO();
+        List userlist = vuDAO.viewRow(su, st);
 
         request.setAttribute("result", userlist);
 
