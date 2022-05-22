@@ -4,8 +4,6 @@
  */
 package com.phoenixairline.controllers.ticketmanagement;
 
-import com.phoenixairline.models.Ticket;
-import com.phoenixairline.models.TicketDao;
 import com.phoenixairline.models.TicketDelete;
 import java.io.IOException;
 import java.io.PrintWriter;

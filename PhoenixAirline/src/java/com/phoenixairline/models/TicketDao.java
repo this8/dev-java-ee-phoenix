@@ -20,8 +20,8 @@ public class TicketDao {
 
     public String createTicket(Ticket ticketBean) {
         //get values from ticketBean
-        String userId = ticketBean.getUserId();
-        String fhacId = ticketBean.getFhacId();
+        int userId = ticketBean.getUserId();
+        int fhacId = ticketBean.getFhacId();
         String passportNumber = ticketBean.getPassportNumber();
         String bookingDate = ticketBean.getBookingDate();
         String classType = ticketBean.getClassType();
@@ -68,9 +68,9 @@ public class TicketDao {
 
 //update ticket details method
     public String updateTicket(Ticket ticketBean) {
-        String bookingId = ticketBean.getUserId();
-        String userId = ticketBean.getUserId();
-        String fhacId = ticketBean.getFhacId();
+        int bookingId = ticketBean.getUserId();
+        int userId = ticketBean.getUserId();
+        int fhacId = ticketBean.getFhacId();
         String passportNumber = ticketBean.getPassportNumber();
         String bookingDate = ticketBean.getBookingDate();
         String classType = ticketBean.getClassType();
