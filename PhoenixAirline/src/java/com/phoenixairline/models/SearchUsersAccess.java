@@ -8,22 +8,28 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminDCDAO {
+public class SearchUsersAccess {
 
     Connection con = null;
     Statement statement = null;
     ResultSet resultSet = null;
 
-    public List getDynamicContent() {
+    public List viewRow(String su, String st) {
         List user_details = new ArrayList();
 
         try {
             con = ConnectToDB.createConnection();
             statement = con.createStatement();
 
-            resultSet = statement.executeQuery("select * from user");
+            System.out.println(su);
+            System.out.println(st);
 
-//            join query and use result set metadata
+            if (st.equals("username")) {
+                resultSet = statement.executeQuery("select * from user where username like'%" + su + "%';");
+            } else {
+                resultSet = statement.executeQuery("select * from user where email like'%" + su + "%';");
+            }
+
             while (resultSet.next()) {
                 String first_name = resultSet.getString("first_name");
                 String last_name = resultSet.getString("last_name");
@@ -33,9 +39,8 @@ public class AdminDCDAO {
                 String address = resultSet.getString("address");
                 String phone_number = resultSet.getString("phone_number");
                 String role = resultSet.getString("role");
-                System.out.println(first_name);
+                System.out.println(role);
 
-//                can add tr td to whlie loop in jsp for less lines
                 user_details.add(first_name);
                 user_details.add(last_name);
                 user_details.add(email);
@@ -47,10 +52,7 @@ public class AdminDCDAO {
             }
             con.close();
         } catch (SQLException e) {
-            System.out.println(e);
         }
         return user_details;
-
     }
-
 }

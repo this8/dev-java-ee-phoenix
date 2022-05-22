@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminDCDAO {
+public class AdminDCAccess {
 
     Connection con = null;
     Statement statement = null;

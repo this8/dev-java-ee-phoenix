@@ -1,7 +1,7 @@
 package com.phoenixairline.controllers.FlightControllers;
 
 import com.phoenixairline.models.Flight;
-import com.phoenixairline.models.FlightDAO;
+import com.phoenixairline.models.FlightAccess;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServlet;
@@ -22,9 +22,9 @@ public class DeleteFlightInfoServlet extends HttpServlet {
         int FlightId = Integer.parseInt(request.getParameter("flightId"));
 
         Flight flightBean = new Flight(FlightId);
-        FlightDAO flightDAO = new FlightDAO();
+        FlightAccess flightAccess = new FlightAccess();
 
-        String result = flightDAO.DeleteFlightDetails(flightBean);
+        String result = flightAccess.DeleteFlightDetails(flightBean);
         PrintWriter out = response.getWriter();
         out.println(result);
 

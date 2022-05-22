@@ -13,7 +13,7 @@ import java.sql.SQLException;
  *
  * @author yasas
  */
-public class SessionDAO {
+public class SessionAccess {
 
     public void insertToDB(UserSession sesBean) {
         Connection con = ConnectToDB.createConnection();

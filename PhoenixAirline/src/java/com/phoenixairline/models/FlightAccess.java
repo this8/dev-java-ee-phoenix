@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author dell
  */
-public class FlightDAO {
+public class FlightAccess {
 
     Connection con;
     Statement statement;
@@ -45,7 +45,7 @@ public class FlightDAO {
             i = statement.executeUpdate(InsertQuery);
 
         } catch (SQLException ex) {
-            Logger.getLogger(FlightDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FlightAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         if (i != 0) {
@@ -74,7 +74,7 @@ public class FlightDAO {
             i = statement.executeUpdate(updateQuery);
 
         } catch (SQLException ex) {
-            Logger.getLogger(FlightDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FlightAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         if (i != 0) {
@@ -95,7 +95,7 @@ public class FlightDAO {
             i = statement.executeUpdate(dltQuery);
 
         } catch (SQLException ex) {
-            Logger.getLogger(FlightDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FlightAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         if (i != 0) {

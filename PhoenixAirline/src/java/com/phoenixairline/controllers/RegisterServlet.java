@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.phoenixairline.models.User;
-import com.phoenixairline.models.RegisterDAO;
+import com.phoenixairline.models.RegisterAccess;
 
 public class RegisterServlet extends HttpServlet {
 
@@ -34,9 +34,9 @@ public class RegisterServlet extends HttpServlet {
         String role = request.getParameter("role");
 
         User registerBean = new User(first_name, last_name, email, username, password, address, phone_number, role);
-        RegisterDAO registerDAO = new RegisterDAO();
+        RegisterAccess registerAccess = new RegisterAccess();
 
-        String result = registerDAO.Registerindb(registerBean);
+        String result = registerAccess.Registerindb(registerBean);
         if (result.equals("User is registered")) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
             dispatcher.include(request, response);

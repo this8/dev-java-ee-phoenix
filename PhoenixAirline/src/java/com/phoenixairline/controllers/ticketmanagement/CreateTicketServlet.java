@@ -1,7 +1,7 @@
 package com.phoenixairline.controllers.ticketmanagement;
 
 import com.phoenixairline.models.Ticket;
-import com.phoenixairline.models.TicketDAO;
+import com.phoenixairline.models.TicketAccess;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -28,9 +28,9 @@ public class CreateTicketServlet extends HttpServlet {
         System.out.println("user id from session " + userId);
 
         Ticket ticketBean = new Ticket(userId, fhacId, passport, date, classType, seats);
-        TicketDAO ticketDAO = new TicketDAO();
+        TicketAccess ticketAccess = new TicketAccess();
 
-        String result = ticketDAO.createTicket(ticketBean);
+        String result = ticketAccess.createTicket(ticketBean);
         PrintWriter out = response.getWriter();
         out.println(result);
     }

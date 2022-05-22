@@ -1,6 +1,6 @@
 package com.phoenixairline.controllers;
 
-import com.phoenixairline.models.AdminDCDAO;
+import com.phoenixairline.models.AdminDCAccess;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -15,7 +15,7 @@ public class AdminDCServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        AdminDCDAO adc = new AdminDCDAO();
+        AdminDCAccess adc = new AdminDCAccess();
         List dclist = adc.getDynamicContent();
 
         request.setAttribute("dc", dclist);

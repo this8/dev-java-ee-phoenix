@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class TicketDAO {
+public class TicketAccess {
 
     Connection con = null;
     Statement statement = null;
@@ -35,7 +35,7 @@ public class TicketDAO {
             i = statement.executeUpdate(InsertQuery);
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(TicketDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TicketAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (i != 0) {
             return "Reservation details inserted successfully";
@@ -61,7 +61,7 @@ public class TicketDAO {
             }
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(TicketDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TicketAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
         return reservationList;
     }
@@ -84,7 +84,7 @@ public class TicketDAO {
             i = statement.executeUpdate(updateQuery);
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(TicketDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TicketAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (i != 0) {
             return "Reservation details inserted successfully";

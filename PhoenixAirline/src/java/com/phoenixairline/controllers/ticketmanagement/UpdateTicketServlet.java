@@ -5,7 +5,7 @@
 package com.phoenixairline.controllers.ticketmanagement;
 
 import com.phoenixairline.models.Ticket;
-import com.phoenixairline.models.TicketDAO;
+import com.phoenixairline.models.TicketAccess;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -85,7 +85,7 @@ public class UpdateTicketServlet extends HttpServlet {
         System.out.println("user id from session " + userId);
 
         Ticket ticketBean = new Ticket(bookingId, userId, fhacId, passportNumber, date, classType, seats);
-        TicketDAO updateTicket = new TicketDAO();
+        TicketAccess updateTicket = new TicketAccess();
         String updateResult = updateTicket.updateTicket(ticketBean);
         PrintWriter out = response.getWriter();
         out.println(updateResult);

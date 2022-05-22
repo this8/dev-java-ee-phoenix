@@ -4,7 +4,7 @@
  */
 package com.phoenixairline.controllers.FlightControllers;
 
-import com.phoenixairline.models.FlightDAO;
+import com.phoenixairline.models.FlightAccess;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -28,8 +28,8 @@ public class ViewFlightInfoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 
         try {
-            FlightDAO flightDAO = new FlightDAO();
-            List flightDetails = flightDAO.viewAllFlightDetails();
+            FlightAccess flightAccess = new FlightAccess();
+            List flightDetails = flightAccess.viewAllFlightDetails();
 
             request.setAttribute("result", flightDetails);
 
