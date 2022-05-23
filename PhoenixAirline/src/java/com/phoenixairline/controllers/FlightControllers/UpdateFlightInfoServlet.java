@@ -23,15 +23,17 @@ public class UpdateFlightInfoServlet extends HttpServlet {
 
         response.setContentType("text/html");
         int FlightId = Integer.parseInt(request.getParameter("flightId"));
-        String Gate = request.getParameter("gate");
         String Takeoff_airport = request.getParameter("takeoff_airport");
         String Takeoff_time = request.getParameter("takeoff_time");
         String Takeoff_date = request.getParameter("takeoff_date");
         String Landing_airport = request.getParameter("landing_airport");
         String Landing_time = request.getParameter("landing_time");
         String Landing_date = request.getParameter("landing_date");
+        String Gate = request.getParameter("gate");
+        float cost = Float.parseFloat(request.getParameter("cost"));
+        int aircraftId = Integer.parseInt(request.getParameter("aircraft_id"));
 
-        Flight flightBean = new Flight(FlightId, Gate, Takeoff_airport, Takeoff_time, Takeoff_date, Landing_airport, Landing_time, Landing_date);
+        Flight flightBean = new Flight(FlightId, Takeoff_airport, Takeoff_time, Takeoff_date, Landing_airport, Landing_time, Landing_date, Gate, cost, aircraftId);
         FlightDAO flightDAO = new FlightDAO();
 
         String result = flightDAO.UpdateFlightDetails(flightBean);

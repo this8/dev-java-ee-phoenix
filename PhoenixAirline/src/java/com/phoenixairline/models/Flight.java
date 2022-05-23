@@ -3,24 +3,27 @@ package com.phoenixairline.models;
 public class Flight {
 
     private int flight_id;
-    private String gate;
     private String takeoff_airport;
     private String takeoff_time;
     private String takeoff_date;
     private String landing_airport;
     private String landing_time;
     private String landing_date;
+    private String gate;
+    private float cost;
+    private int aircraft_id;
 
-    public Flight(int flight_id, String gate, String takeoff_airport, String takeoff_time, String takeoff_date, String landing_airport, String landing_time, String landing_date) {
-        super();
+    public Flight(int flight_id, String takeoff_airport, String takeoff_time, String takeoff_date, String landing_airport, String landing_time, String landing_date, String gate, float cost, int aircraft_id) {
         this.flight_id = flight_id;
-        this.gate = gate;
         this.takeoff_airport = takeoff_airport;
         this.takeoff_time = takeoff_time;
         this.takeoff_date = takeoff_date;
         this.landing_airport = landing_airport;
         this.landing_time = landing_time;
         this.landing_date = landing_date;
+        this.gate = gate;
+        this.cost = cost;
+        this.aircraft_id = aircraft_id;
     }
 
     public Flight() {
@@ -142,6 +145,34 @@ public class Flight {
      */
     public void setLanding_date(String landing_date) {
         this.landing_date = landing_date;
+    }
+
+    /**
+     * @return the aircraft_id
+     */
+    public int getAircrafft_id() {
+        return aircraft_id;
+    }
+
+    /**
+     * @param aircrafft_id the aircraft_id to set
+     */
+    public void setAircrafft_id(int aircrafft_id) {
+        this.aircraft_id = aircrafft_id;
+    }
+
+    /**
+     * @return the cost
+     */
+    public float getCost() {
+        return cost;
+    }
+
+    /**
+     * @param cost the cost to set
+     */
+    public void setCost(float cost) {
+        this.cost = cost;
     }
 
 }
