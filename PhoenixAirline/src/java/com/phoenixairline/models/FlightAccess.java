@@ -26,21 +26,22 @@ public class FlightAccess {
     ResultSet resultSet;
 
     public String InsertFlightDetails(Flight flightBean) {
-
-        int flight_id = flightBean.getFlight_id();
-        String gate = flightBean.getGate();
+        
+        int aircraftId = flightBean.getAircrafft_id();
         String takeoff_airport = flightBean.getTakeoff_airport();
         String takeoff_time = flightBean.getTakeoff_time();
         String takeoff_date = flightBean.getTakeoff_date();
         String landing_airport = flightBean.getLanding_airport();
         String landing_time = flightBean.getLanding_time();
         String landing_date = flightBean.getLanding_date();
+        String gate = flightBean.getGate();
+        float cost = flightBean.getCost();
 
         con = ConnectToDB.createConnection();
 
         try {
             statement = con.createStatement();
-            String InsertQuery = "INSERT INTO flight VALUES(" + flight_id + ",'" + gate + "','" + takeoff_airport + "','" + takeoff_time + "','" + takeoff_date + "','" + landing_airport + "','" + landing_time + "','" + landing_date + "')";
+             String InsertQuery = "INSERT INTO flight (takeoff_airport,takeoff_time,takeoff_date,landing_airport,landing_time,landing_date,gate,cost,aircraft_flight) VALUES('" + takeoff_airport + "','" + takeoff_time + "','" + takeoff_date + "','" + landing_airport + "','" + landing_time + "','" + landing_date + "','" + gate + "','" + cost + "'," + aircraftId + ");";
 
             i = statement.executeUpdate(InsertQuery);
 
@@ -65,12 +66,12 @@ public class FlightAccess {
         String landing_airport = flightBean.getLanding_airport();
         String landing_time = flightBean.getLanding_time();
         String landing_date = flightBean.getLanding_date();
+        int aircraftId = flightBean.getAircrafft_id();
 
         con = ConnectToDB.createConnection();
         try {
             statement = con.createStatement();
-            String updateQuery = "UPDATE flight SET gate='" + gate + "',takeoff_airport='" + takeoff_airport + "',takeoff_time='" + takeoff_time + "',takeoff_date='" + takeoff_date + "',landing_airport='" + landing_airport + "',landing_time='" + landing_time + "',landing_date='" + landing_date + "' WHERE flight_id=" + flight_id + ";";
-
+            String updateQuery = "UPDATE flight SET gate='" + gate + "',takeoff_airport='" + takeoff_airport + "',takeoff_time='" + takeoff_time + "',takeoff_date='" + takeoff_date + "',landing_airport='" + landing_airport + "',landing_time='" + landing_time + "',landing_date='" + landing_date + "',aircraft_flight='"+aircraftId+"' WHERE flight_id=" + flight_id + ";";
             i = statement.executeUpdate(updateQuery);
 
         } catch (SQLException ex) {
@@ -114,22 +115,26 @@ public class FlightAccess {
 
         while (resultSet.next()) {
             int flight_id = resultSet.getInt("flight_id");
-            String gate = resultSet.getString("gate");
             String takeoff_airport = resultSet.getString("takeoff_airport");
             String takeoff_time = resultSet.getString("takeoff_time");
             String takeoff_date = resultSet.getString("takeoff_date");
             String landing_airport = resultSet.getString("landing_airport");
             String landing_time = resultSet.getString("landing_time");
             String landing_date = resultSet.getString("landing_date");
+            String gate = resultSet.getString("gate");
+            String cost = resultSet.getString("cost");
+            int aircraftId = resultSet.getInt("aircraft_flight");
 
             flight_details.add(flight_id);
-            flight_details.add(gate);
             flight_details.add(takeoff_airport);
             flight_details.add(takeoff_time);
             flight_details.add(takeoff_date);
             flight_details.add(landing_airport);
             flight_details.add(landing_time);
             flight_details.add(landing_date);
+            flight_details.add(gate);
+            flight_details.add(cost);
+            flight_details.add(aircraftId);
             flight_details.add("<br>");
 
         }
