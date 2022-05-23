@@ -16,7 +16,9 @@
 
         <div style="text-align: right"><a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a></div>
         <div>
-            <a href="userMyReservation.jsp">My Reservation</a> 
+            <form action="SelectTicketServlet" method="POST">
+                <input type="submit" value="Veiw My Reservation" />
+            </form>
         </div>
         <div>
             <form action="ViewFlightInfoServlet" method="POST">
