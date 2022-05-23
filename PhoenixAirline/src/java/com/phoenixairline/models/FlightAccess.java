@@ -27,7 +27,6 @@ public class FlightAccess {
 
     public String InsertFlightDetails(Flight flightBean) {
         
-        int aircraftId = flightBean.getAircrafft_id();
         String takeoff_airport = flightBean.getTakeoff_airport();
         String takeoff_time = flightBean.getTakeoff_time();
         String takeoff_date = flightBean.getTakeoff_date();
@@ -35,16 +34,17 @@ public class FlightAccess {
         String landing_time = flightBean.getLanding_time();
         String landing_date = flightBean.getLanding_date();
         String gate = flightBean.getGate();
-        float cost = flightBean.getCost();
+        String cost = flightBean.getCost();
+        String aircraftId = flightBean.getAircrafft_id();
 
         con = ConnectToDB.createConnection();
 
         try {
             statement = con.createStatement();
-             String InsertQuery = "INSERT INTO flight (takeoff_airport,takeoff_time,takeoff_date,landing_airport,landing_time,landing_date,gate,cost,aircraft_flight) VALUES('" + takeoff_airport + "','" + takeoff_time + "','" + takeoff_date + "','" + landing_airport + "','" + landing_time + "','" + landing_date + "','" + gate + "','" + cost + "'," + aircraftId + ");";
-
+            String InsertQuery = "INSERT INTO flight (takeoff_airport,takeoff_time,takeoff_date,landing_airport,landing_time,landing_date,gate,cost,aircraft_flight) VALUES ('" + takeoff_airport + "','" + takeoff_time + "','" + takeoff_date + "','" + landing_airport + "','" + landing_time + "','" + landing_date + "','" + gate + "','" + cost + "'," + aircraftId + ");";
+            System.out.println("a");
             i = statement.executeUpdate(InsertQuery);
-
+            System.out.println("b");
         } catch (SQLException ex) {
             Logger.getLogger(FlightAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -66,7 +66,7 @@ public class FlightAccess {
         String landing_airport = flightBean.getLanding_airport();
         String landing_time = flightBean.getLanding_time();
         String landing_date = flightBean.getLanding_date();
-        int aircraftId = flightBean.getAircrafft_id();
+        String aircraftId = flightBean.getAircrafft_id();
 
         con = ConnectToDB.createConnection();
         try {
@@ -123,7 +123,7 @@ public class FlightAccess {
             String landing_date = resultSet.getString("landing_date");
             String gate = resultSet.getString("gate");
             String cost = resultSet.getString("cost");
-            int aircraftId = resultSet.getInt("aircraft_flight");
+            String aircraftId = resultSet.getString("aircraft_flight");
 
             flight_details.add(flight_id);
             flight_details.add(takeoff_airport);

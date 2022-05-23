@@ -22,11 +22,11 @@ public class LoginAccess {
         try {
             con = ConnectToDB.createConnection();
             statement = con.createStatement();
-            resultSet = statement.executeQuery("select role,active_status from user where username='" + username + "' && password='" + password + "'");
+            resultSet = statement.executeQuery("SELECT role, is_active FROM user WHERE username='" + username + "' && password='" + password + "'");
 
             while (resultSet.next()) {
                 role = resultSet.getString("role");
-                active_status = resultSet.getInt("active_status");
+                active_status = resultSet.getInt("is_active");
 
                 System.out.println(role);
                 System.out.println(active_status);
@@ -68,10 +68,10 @@ public class LoginAccess {
         try {
             con = ConnectToDB.createConnection();
             statement = con.createStatement();
-            resultSet = statement.executeQuery("select user_id from user where username='" + username + "' && password='" + password + "'");
+            resultSet = statement.executeQuery("SELECT id FROM user WHERE username='" + username + "' && password='" + password + "'");
 
             while (resultSet.next()) {
-                user_id = resultSet.getInt("user_id");
+                user_id = resultSet.getInt("id");
                 System.out.println(user_id);
             }
             con.close();
