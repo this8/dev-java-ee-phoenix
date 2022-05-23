@@ -19,7 +19,9 @@
             <a href="userMyReservation.jsp">My Reservation</a> 
         </div>
         <div>
-            <a href="AllFlightDetails.jsp">All Flight Details</a> 
+            <form action="ViewFlightInfoServlet" method="POST">
+                <input type="submit" value="Veiw All Flight Details" />
+            </form>
         </div>
     </body>
 </html>
