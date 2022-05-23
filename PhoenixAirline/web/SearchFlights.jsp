@@ -16,14 +16,14 @@
         <div>
             <form method="post" action="SearchFlightInfoServlet">
                 Select option to Search data  
-                <input type="date" name="landing_date" value="" />
-                <select name="landing_airport">
-                    <option value="ABV">Nigeria</option>
-                    <option value="CWL">Cardiff</option>
-                </select>
+                <input type="date" name="takeoff_date" value="" />
                 <select name="takeoff_airport">
                     <option value="AAL">AAL</option>
                     <option value="CMB">Colombo</option>
+                </select>
+                <select name="landing_airport">
+                    <option value="ABV">Nigeria</option>
+                    <option value="CWL">Cardiff</option>
                 </select>
                 <input type="submit" name="Search"/>
                 <input type="reset" name="Cancel"/>

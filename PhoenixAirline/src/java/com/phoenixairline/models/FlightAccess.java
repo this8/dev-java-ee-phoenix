@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.phoenixairline.models;
 
 import com.phoenixairline.util.ConnectToDB;
@@ -12,10 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author dell
- */
 public class FlightAccess {
 
     Connection con;
@@ -144,58 +136,50 @@ public class FlightAccess {
         return flight_details;
     }
 
-    public List searchData(String searchValue, String searchCategory) {
+    public List searchData(Flight flightBean) {
         List searchFlight_details = new ArrayList();
         con = ConnectToDB.createConnection();
 
-        System.out.println(searchValue);
-        System.out.println(searchCategory);
+        String takeoff_date = flightBean.getTakeoff_date();
+        String takeoff_airport = flightBean.getLanding_airport();
+        String landing_airport = flightBean.getTakeoff_airport();
+
+        System.out.println(takeoff_airport);
+        System.out.println(landing_airport);
 
         //filter value accoridng to select category and 
         try {
             statement = con.createStatement();
-            switch (searchCategory) {
-                case "takeoff_date":
-                    resultSet = statement.executeQuery("select * from flight where takeoff_date like'%" + searchValue + "%';");
-                    break;
-                case "landing_date":
-                    resultSet = statement.executeQuery("select * from flight where landing_date like'%" + searchValue + "%';");
-                    break;
-                case "landing_airport":
-                    resultSet = statement.executeQuery("select * from flight where landing_airport like'%" + searchValue + "%';");
-                    break;
-                case "takeoff_airport":
-                    resultSet = statement.executeQuery("select * from flight where takeoff_airport like'%" + searchValue + "%';");
-                    break;
-                default:
-                    break;
-            }
+
+            resultSet = statement.executeQuery("select * from flight where takeoff_date='" + takeoff_date + "' && takeoff_airport='" + takeoff_airport + "' && takeoff_airport='" + landing_airport + "';");
 
             while (resultSet.next()) {
-                int flight_id = resultSet.getInt("flight_id");
-                String gate = resultSet.getString("gate");
-                String takeoff_airport = resultSet.getString("takeoff_airport");
-                String takeoff_time = resultSet.getString("takeoff_time");
-                String takeoff_date = resultSet.getString("takeoff_date");
-                String landing_airport = resultSet.getString("landing_airport");
-                String landing_time = resultSet.getString("landing_time");
-                String landing_date = resultSet.getString("landing_date");
+                int id_db = resultSet.getInt("id");
+                String takeoff_airport_db = resultSet.getString("takeoff_airport");
+                String takeoff_time_db = resultSet.getString("takeoff_time");
+                String takeoff_date_db = resultSet.getString("takeoff_date");
+                String landing_airport_db = resultSet.getString("landing_airport");
+                String landing_time_db = resultSet.getString("landing_time");
+                String landing_date_db = resultSet.getString("landing_date");
+                String gate_db = resultSet.getString("gate");
+                float cost_db = resultSet.getFloat("cost");
+                String aircraft_flight_db = resultSet.getString("aircraft_flight");
 
-                searchFlight_details.add(flight_id);
-                searchFlight_details.add(gate);
-                searchFlight_details.add(takeoff_airport);
-                searchFlight_details.add(takeoff_time);
-                searchFlight_details.add(takeoff_date);
-                searchFlight_details.add(landing_airport);
-                searchFlight_details.add(landing_time);
-                searchFlight_details.add(landing_date);
-                searchFlight_details.add("<br>");
+                searchFlight_details.add(id_db);
+                searchFlight_details.add(takeoff_airport_db);
+                searchFlight_details.add(takeoff_time_db);
+                searchFlight_details.add(takeoff_date_db);
+                searchFlight_details.add(landing_airport_db);
+                searchFlight_details.add(landing_time_db);
+                searchFlight_details.add(landing_date_db);
+                searchFlight_details.add(gate_db);
+                searchFlight_details.add(cost_db);
+                searchFlight_details.add(aircraft_flight_db);
 
             }
         } catch (SQLException ex) {
             System.out.println(ex);
         }
         return searchFlight_details;
-
     }
 }
