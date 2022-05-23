@@ -38,7 +38,6 @@ public class FlightAccess {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-
         if (i != 0) {
             return "Flight details inserted successfully";
         } else {
@@ -97,10 +96,8 @@ public class FlightAccess {
     }
 
     public List viewAllFlightDetails() {
-
         List flight_details = new ArrayList();
         con = ConnectToDB.createConnection();
-
         try {
             statement = con.createStatement();
             resultSet = statement.executeQuery("SELECT * FROM flight;");
@@ -127,12 +124,10 @@ public class FlightAccess {
                 flight_details.add(gate);
                 flight_details.add(cost);
                 flight_details.add(aircraftId);
-
             }
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-
         return flight_details;
     }
 
@@ -141,18 +136,14 @@ public class FlightAccess {
         con = ConnectToDB.createConnection();
 
         String takeoff_date = flightBean.getTakeoff_date();
-        String takeoff_airport = flightBean.getLanding_airport();
-        String landing_airport = flightBean.getTakeoff_airport();
-
-        System.out.println(takeoff_airport);
-        System.out.println(landing_airport);
+        String takeoff_airport = flightBean.getTakeoff_airport();
+        String landing_airport = flightBean.getLanding_airport();
 
         //filter value accoridng to select category and 
         try {
             statement = con.createStatement();
 
-            resultSet = statement.executeQuery("select * from flight where takeoff_date='" + takeoff_date + "' && takeoff_airport='" + takeoff_airport + "' && takeoff_airport='" + landing_airport + "';");
-
+            resultSet = statement.executeQuery("SELECT * FROM flight WHERE takeoff_airport='" + takeoff_airport + "' AND landing_airport='" + landing_airport + "' AND takeoff_date='" + takeoff_date + "';");
             while (resultSet.next()) {
                 int id_db = resultSet.getInt("id");
                 String takeoff_airport_db = resultSet.getString("takeoff_airport");
@@ -161,7 +152,7 @@ public class FlightAccess {
                 String landing_airport_db = resultSet.getString("landing_airport");
                 String landing_time_db = resultSet.getString("landing_time");
                 String landing_date_db = resultSet.getString("landing_date");
-                String gate_db = resultSet.getString("gate");
+                int gate_db = resultSet.getInt("gate");
                 float cost_db = resultSet.getFloat("cost");
                 String aircraft_flight_db = resultSet.getString("aircraft_flight");
 
@@ -175,7 +166,6 @@ public class FlightAccess {
                 searchFlight_details.add(gate_db);
                 searchFlight_details.add(cost_db);
                 searchFlight_details.add(aircraft_flight_db);
-
             }
         } catch (SQLException ex) {
             System.out.println(ex);

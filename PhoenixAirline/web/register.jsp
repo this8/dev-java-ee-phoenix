@@ -24,7 +24,7 @@
                 Address:<textarea name="address" rows="4" cols="50"></textarea><br/>
                 Phone:<input type="text" name="phone_number" value="" /><br/>
                 User Type:<select name="role">
-                    <option value="user">User</option>
+                    <option value="client">Client</option>
                     <option value="staffg1">Grade 1 Staff</option>
                     <option value="staffg2">Grade 2 Staff</option>
                     <!--                    <option value="admin">Admin</option>-->

@@ -21,7 +21,7 @@ public class AdminDCAccess {
             con = ConnectToDB.createConnection();
             statement = con.createStatement();
 
-            resultSet = statement.executeQuery("SELECT USER.first_name, USER.last_name, USER.email, USER.username, USER.role, SESSION.login_time, SESSION.ip_address FROM SESSION INNER JOIN USER ON SESSION .user_session = USER.id;");
+            resultSet = statement.executeQuery("SELECT USER.first_name, USER.last_name, USER.email, USER.username, USER.role, SESSION.login_time, SESSION.ip_address FROM SESSION INNER JOIN USER ON SESSION .user_session = USER.id ORDER BY SESSION.id DESC;");
 
 //            join query and use result set metadata
             while (resultSet.next()) {

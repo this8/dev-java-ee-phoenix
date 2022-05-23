@@ -49,7 +49,7 @@ public class TicketAccess {
         con = ConnectToDB.createConnection();
         try {
             statement = con.createStatement();
-            resultSet = statement.executeQuery("SELECT user.first_name,flight.takeoff_airport,flight.landing_airport,flight.takeoff_date,flight.takeoff_time,flight.gate,seat.seat_name,reservation.total_price FROM ticket INNER JOIN flight ON ticket.flight_ticket=flight.id INNER JOIN seat ON ticket.seat_ticket=seat.id INNER JOIN reservation ON ticket.reservation_ticket=reservation.id INNER JOIN user ON reservation.user_reservation=user.id WHERE user.id='"+currentUserId+"';");
+            resultSet = statement.executeQuery("SELECT user.first_name,flight.takeoff_airport,flight.landing_airport,flight.takeoff_date,flight.takeoff_time,flight.gate,seat.seat_name,reservation.total_price FROM ticket INNER JOIN flight ON ticket.flight_ticket=flight.id INNER JOIN seat ON ticket.seat_ticket=seat.id INNER JOIN reservation ON ticket.reservation_ticket=reservation.id INNER JOIN user ON reservation.user_reservation=user.id WHERE user.id='" + currentUserId + "';");
             while (resultSet.next()) {
                 reservationList.add(resultSet.getString("user.first_name"));
                 reservationList.add(resultSet.getString("flight.takeoff_airport"));
