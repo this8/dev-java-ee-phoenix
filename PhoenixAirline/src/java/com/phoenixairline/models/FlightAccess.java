@@ -111,10 +111,10 @@ public class FlightAccess {
 
         try {
             statement = con.createStatement();
-            resultSet = statement.executeQuery("select * from flight;");
+            resultSet = statement.executeQuery("SELECT * FROM flight;");
 
             while (resultSet.next()) {
-                int flight_id = resultSet.getInt("flight_id");
+                int flight_id = resultSet.getInt("id");
                 String takeoff_airport = resultSet.getString("takeoff_airport");
                 String takeoff_time = resultSet.getString("takeoff_time");
                 String takeoff_date = resultSet.getString("takeoff_date");
@@ -122,7 +122,7 @@ public class FlightAccess {
                 String landing_time = resultSet.getString("landing_time");
                 String landing_date = resultSet.getString("landing_date");
                 String gate = resultSet.getString("gate");
-                String cost = resultSet.getString("cost");
+                float cost = resultSet.getFloat("cost");
                 String aircraftId = resultSet.getString("aircraft_flight");
 
                 flight_details.add(flight_id);
@@ -135,7 +135,6 @@ public class FlightAccess {
                 flight_details.add(gate);
                 flight_details.add(cost);
                 flight_details.add(aircraftId);
-                flight_details.add("<br>");
 
             }
         } catch (SQLException ex) {

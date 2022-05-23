@@ -16,10 +16,14 @@
 
         <div style="text-align: right"><a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a></div>
         <div>
-            <a href="userMyReservation.jsp">My Reservation</a> 
+            <form action="SelectTicketServlet" method="POST">
+                <input type="submit" value="Veiw My Reservation" />
+            </form>
         </div>
         <div>
-            <a href="AllFlightDetails.jsp">All Flight Details</a> 
+            <form action="ViewFlightInfoServlet" method="POST">
+                <input type="submit" value="Veiw All Flight Details" />
+            </form>
         </div>
     </body>
 </html>

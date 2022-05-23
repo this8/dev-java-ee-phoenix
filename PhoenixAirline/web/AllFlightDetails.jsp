@@ -17,18 +17,33 @@
     <body>
         <h1>All Flight Details</h1>
 
+        <table border="1">
+            <thead>
+            </thead>
+            <tbody>
+                <%
+                    if ((request.getAttribute("result") != null)) {
+                        List data = new ArrayList();
+                        data = (List) request.getAttribute("result");
+                        Iterator itr = data.iterator();
+                        while (itr.hasNext()) {
+                %>
+                <tr>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                </tr>
+                <%}
+                    }%>
+            </tbody>
+        </table>
 
-        <%
-            if ((request.getAttribute("result") != null)) {
-                List flight_list = new ArrayList();
-                flight_list = (List) request.getAttribute("result");
-                Iterator it = flight_list.iterator();
-                while (it.hasNext()) {
-                    out.println(it.next());
-                }
-            }
-
-
-        %>
     </body>
 </html>
