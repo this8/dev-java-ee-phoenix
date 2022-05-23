@@ -22,19 +22,20 @@ public class SessionAccess {
         String ip_address = sesBean.getIp_address();
         String login_time = sesBean.getLogin_time();
 
-        String query = "INSERT INTO session (user_session_id,ip_address, login_time) VALUES (?,?,?) ";
+        String query = "INSERT INTO session (login_time,ip_address, user_session) VALUES (?,?,?) ";
         int i = 0;
         try {
 
             PreparedStatement stmt = con.prepareStatement(query);
 
-            stmt.setInt(1, user_session_id);
+            stmt.setString(1, login_time);
             stmt.setString(2, ip_address);
-            stmt.setString(3, login_time);
+            stmt.setInt(3, user_session_id);
 
             i = stmt.executeUpdate();
             con.close();
         } catch (SQLException e) {
+            System.out.println(e);
 
         }
     }

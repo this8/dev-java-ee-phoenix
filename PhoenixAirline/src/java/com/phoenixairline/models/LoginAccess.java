@@ -33,8 +33,8 @@ public class LoginAccess {
 
                 if (active_status == 1) {
                     switch (role) {
-                        case "user":
-                            return "User_Role";
+                        case "client":
+                            return "Client_Role";
                         case "staffg1":
                             return "StaffG1_Role";
                         case "staffg2":
@@ -51,6 +51,7 @@ public class LoginAccess {
             }
             con.close();
         } catch (SQLException e) {
+            System.out.println(e);
         }
         return "Incorrect Username or Password";
     }
@@ -76,6 +77,7 @@ public class LoginAccess {
             }
             con.close();
         } catch (SQLException e) {
+            System.out.println(e);
         }
         return user_id;
     }

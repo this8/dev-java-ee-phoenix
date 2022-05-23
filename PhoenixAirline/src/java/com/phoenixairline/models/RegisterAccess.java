@@ -39,10 +39,11 @@ public class RegisterAccess {
             stmt.setString(7, address);
             stmt.setString(8, role);
             stmt.setInt(9, active_status);
-            
+
             i = stmt.executeUpdate();
             con.close();
         } catch (SQLException e) {
+            System.out.println(e);
 
         }
         if (i != 0) {

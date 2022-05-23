@@ -55,28 +55,28 @@ public class LoginServlet extends HttpServlet {
             switch (userValidate) {
                 case "Admin_Role": {
                     System.out.println("Admin Home");
-                    session.setMaxInactiveInterval(2 * 60);
+                    session.setMaxInactiveInterval(20 * 60);
                     session.setAttribute("admin", username); //setting session attribute
                     request.getRequestDispatcher("/admin.jsp").forward(request, response);
                     break;
                 }
-                case "User_Role": {
-                    System.out.println("User Home");
-                    session.setMaxInactiveInterval(10 * 60);
-                    session.setAttribute("user", username); //setting session attribute
+                case "Client_Role": {
+                    System.out.println("Client Home");
+                    session.setMaxInactiveInterval(60 * 60);
+                    session.setAttribute("client", username); //setting session attribute
                     request.getRequestDispatcher("/user.jsp").forward(request, response);
                     break;
                 }
                 case "StaffG1_Role": {
                     System.out.println("StaffG1 Home");
-                    session.setMaxInactiveInterval(2 * 60);
+                    session.setMaxInactiveInterval(20 * 60);
                     session.setAttribute("staffg1", username);
                     request.getRequestDispatcher("/staffg1.jsp").forward(request, response);
                     break;
                 }
                 case "StaffG2_Role": {
                     System.out.println("StaffG2 Home");
-                    session.setMaxInactiveInterval(2 * 60);
+                    session.setMaxInactiveInterval(20 * 60);
                     session.setAttribute("staffg2", username);
                     request.getRequestDispatcher("/staffg2.jsp").forward(request, response);
                     break;

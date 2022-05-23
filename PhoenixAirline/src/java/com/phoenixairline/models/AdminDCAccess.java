@@ -21,7 +21,7 @@ public class AdminDCAccess {
             con = ConnectToDB.createConnection();
             statement = con.createStatement();
 
-            resultSet = statement.executeQuery("select * from user");
+            resultSet = statement.executeQuery("SELECT USER.first_name, USER.last_name, USER.email, USER.username, USER.role, SESSION.login_time, SESSION.ip_address FROM SESSION INNER JOIN USER ON SESSION .user_session = USER.id;");
 
 //            join query and use result set metadata
             while (resultSet.next()) {
@@ -29,10 +29,9 @@ public class AdminDCAccess {
                 String last_name = resultSet.getString("last_name");
                 String email = resultSet.getString("email");
                 String username = resultSet.getString("username");
-                String password = resultSet.getString("password");
-                String address = resultSet.getString("address");
-                String phone_number = resultSet.getString("phone_number");
                 String role = resultSet.getString("role");
+                String ip_address = resultSet.getString("ip_address");
+                String login_time = resultSet.getString("login_time");
                 System.out.println(first_name);
 
 //                can add tr td to whlie loop in jsp for less lines
@@ -40,10 +39,9 @@ public class AdminDCAccess {
                 user_details.add(last_name);
                 user_details.add(email);
                 user_details.add(username);
-                user_details.add(password);
-                user_details.add(address);
-                user_details.add(phone_number);
                 user_details.add(role);
+                user_details.add(ip_address);
+                user_details.add(login_time);
             }
             con.close();
         } catch (SQLException e) {

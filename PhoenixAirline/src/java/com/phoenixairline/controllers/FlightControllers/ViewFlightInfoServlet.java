@@ -6,10 +6,7 @@ package com.phoenixairline.controllers.FlightControllers;
 
 import com.phoenixairline.models.FlightAccess;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,8 +32,8 @@ public class ViewFlightInfoServlet extends HttpServlet {
 
             RequestDispatcher rd = request.getRequestDispatcher("AllFlightDetails.jsp");
             rd.forward(request, response);
-        } catch (ServletException | IOException | SQLException ex) {
-            Logger.getLogger(ViewFlightInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ServletException | IOException ex) {
+            System.out.println(ex);
         }
 
     }

@@ -35,9 +35,6 @@ public class SearchUsersAccess {
                 String last_name = resultSet.getString("last_name");
                 String email = resultSet.getString("email");
                 String username = resultSet.getString("username");
-                String password = resultSet.getString("password");
-                String address = resultSet.getString("address");
-                String phone_number = resultSet.getString("phone_number");
                 String role = resultSet.getString("role");
                 System.out.println(role);
 
@@ -45,14 +42,55 @@ public class SearchUsersAccess {
                 user_details.add(last_name);
                 user_details.add(email);
                 user_details.add(username);
-                user_details.add(password);
-                user_details.add(address);
-                user_details.add(phone_number);
                 user_details.add(role);
             }
             con.close();
         } catch (SQLException e) {
+            System.out.println(e);
         }
         return user_details;
+    }
+
+    public List viewRow_admin(String su, String st) {
+        List user_details = new ArrayList();
+
+        try {
+            con = ConnectToDB.createConnection();
+            statement = con.createStatement();
+
+            System.out.println(su);
+            System.out.println(st);
+
+            if (st.equals("username")) {
+                resultSet = statement.executeQuery("SELECT USER.first_name, USER.last_name, USER.email, USER.username, USER.role, SESSION.login_time, SESSION.ip_address FROM SESSION INNER JOIN USER ON SESSION .user_session = USER.id where USER.username like'%" + su + "%';");
+            } else {
+                resultSet = statement.executeQuery("SELECT USER.first_name, USER.last_name, USER.email, USER.username, USER.role, SESSION.login_time, SESSION.ip_address FROM SESSION INNER JOIN USER ON SESSION .user_session = USER.id where USER.email like'%" + su + "%';");
+            }
+
+            while (resultSet.next()) {
+                String first_name = resultSet.getString("first_name");
+                String last_name = resultSet.getString("last_name");
+                String email = resultSet.getString("email");
+                String username = resultSet.getString("username");
+                String role = resultSet.getString("role");
+                String ip_address = resultSet.getString("ip_address");
+                String login_time = resultSet.getString("login_time");
+                System.out.println(first_name);
+
+//                can add tr td to whlie loop in jsp for less lines
+                user_details.add(first_name);
+                user_details.add(last_name);
+                user_details.add(email);
+                user_details.add(username);
+                user_details.add(role);
+                user_details.add(ip_address);
+                user_details.add(login_time);
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return user_details;
+
     }
 }

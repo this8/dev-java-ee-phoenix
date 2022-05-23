@@ -4,9 +4,6 @@ import com.phoenixairline.models.Flight;
 import com.phoenixairline.models.FlightAccess;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +30,7 @@ public class AddFlightInfoServlet extends HttpServlet {
         String Gate = request.getParameter("gate");
         String cost = request.getParameter("cost");
         String aircraftId = request.getParameter("aircraft_id");
-        System.out.println(aircraftId+"Im here in servlet");
+        System.out.println(aircraftId + "Im here in servlet");
 
         Flight flightBean = new Flight(FlightId, Takeoff_airport, Takeoff_time, Takeoff_date, Landing_airport, Landing_time, Landing_date, Gate, cost, aircraftId);
         FlightAccess flightAccess = new FlightAccess();

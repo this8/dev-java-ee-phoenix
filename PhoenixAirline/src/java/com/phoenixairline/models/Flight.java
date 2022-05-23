@@ -13,7 +13,7 @@ public class Flight {
     private String cost;
     private String aircraft_id;
 
- public Flight(int flight_id, String takeoff_airport, String takeoff_time, String takeoff_date, String landing_airport, String landing_time, String landing_date, String gate, String cost, String aircraft_id) {
+    public Flight(int flight_id, String takeoff_airport, String takeoff_time, String takeoff_date, String landing_airport, String landing_time, String landing_date, String gate, String cost, String aircraft_id) {
         this.flight_id = flight_id;
         this.takeoff_airport = takeoff_airport;
         this.takeoff_time = takeoff_time;

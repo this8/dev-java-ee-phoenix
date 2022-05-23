@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class SearchUsersServlet extends HttpServlet {
+public class SearchUsers_sServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -17,13 +17,14 @@ public class SearchUsersServlet extends HttpServlet {
         String su = request.getParameter("search_user");
         String st = request.getParameter("search_type");
 
-//       use referrer to get requested page
         SearchUsersAccess vuAccess = new SearchUsersAccess();
+
+        String ref = request.getHeader("Referer");
+        System.out.println(ref);
+
         List userlist = vuAccess.viewRow(su, st);
-
+        RequestDispatcher rd = request.getRequestDispatcher("staffg1.jsp");
         request.setAttribute("result", userlist);
-
-        RequestDispatcher rd = request.getRequestDispatcher("admin.jsp");
         rd.forward(request, response);
 
     }

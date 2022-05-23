@@ -17,15 +17,14 @@
     <body>
         <center><h2>Admin Home</h2></center>
         Welcome <%=session.getAttribute("admin")%>
-        Welcome <%=session.getAttribute("user_id")%>
+
         <div style="text-align: right"><a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a></div>
         <%
             if ((request.getAttribute("dc") == null)) {
                 request.getRequestDispatcher("AdminDCServlet").forward(request, response);
             }
         %>
-
-        <form action="SearchUsersServlet" method="POST">
+        <form action="SearchUsers_aServlet" method="POST">
             <h3>View Users</h3>
             <input type="text" name="search_user" value="" />
             <select name="search_type">
@@ -40,34 +39,6 @@
             </thead>
             <tbody>
                 <%
-                    if ((request.getAttribute("result") != null)) {
-                        List user_list = new ArrayList();
-                        user_list = (List) request.getAttribute("result");
-                        Iterator it = user_list.iterator();
-                        while (it.hasNext()) {
-                %>
-                <tr>
-                    <td><%=it.next()%></td>
-                    <td><%=it.next()%></td>
-                    <td><%=it.next()%></td>
-                    <td><%=it.next()%></td>
-                    <td><%=it.next()%></td>
-                    <td><%=it.next()%></td>
-                    <td><%=it.next()%></td>
-                    <td><%=it.next()%></td>
-                </tr>
-                <%}
-                    }%>
-            </tbody>
-        </table>
-
-
-
-        <table border="1">
-            <thead>
-            </thead>
-            <tbody>
-                <%
                     if ((request.getAttribute("dc") != null)) {
                         List data = new ArrayList();
                         data = (List) request.getAttribute("dc");
@@ -75,7 +46,6 @@
                         while (itr.hasNext()) {
                 %>
                 <tr>
-                    <td><%=itr.next()%></td>
                     <td><%=itr.next()%></td>
                     <td><%=itr.next()%></td>
                     <td><%=itr.next()%></td>
