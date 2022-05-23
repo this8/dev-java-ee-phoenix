@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class TicketAccess {
 
@@ -35,7 +33,7 @@ public class TicketAccess {
             i = statement.executeUpdate(InsertQuery);
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(TicketAccess.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
         if (i != 0) {
             return "Reservation details inserted successfully";
@@ -61,7 +59,7 @@ public class TicketAccess {
             }
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(TicketAccess.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
         return reservationList;
     }
@@ -84,7 +82,7 @@ public class TicketAccess {
             i = statement.executeUpdate(updateQuery);
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(TicketAccess.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
         if (i != 0) {
             return "Reservation details inserted successfully";

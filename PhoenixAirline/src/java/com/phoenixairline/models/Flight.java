@@ -10,10 +10,10 @@ public class Flight {
     private String landing_time;
     private String landing_date;
     private String gate;
-    private float cost;
-    private int aircraft_id;
+    private String cost;
+    private String aircraft_id;
 
- public Flight(int flight_id, String takeoff_airport, String takeoff_time, String takeoff_date, String landing_airport, String landing_time, String landing_date, String gate, float cost, int aircraft_id) {
+    public Flight(int flight_id, String takeoff_airport, String takeoff_time, String takeoff_date, String landing_airport, String landing_time, String landing_date, String gate, String cost, String aircraft_id) {
         this.flight_id = flight_id;
         this.takeoff_airport = takeoff_airport;
         this.takeoff_time = takeoff_time;
@@ -150,28 +150,28 @@ public class Flight {
     /**
      * @return the aircraft_id
      */
-    public int getAircrafft_id() {
+    public String getAircrafft_id() {
         return aircraft_id;
     }
 
     /**
      * @param aircrafft_id the aircraft_id to set
      */
-    public void setAircrafft_id(int aircrafft_id) {
+    public void setAircrafft_id(String aircrafft_id) {
         this.aircraft_id = aircrafft_id;
     }
 
     /**
      * @return the cost
      */
-    public float getCost() {
+    public String getCost() {
         return cost;
     }
 
     /**
      * @param cost the cost to set
      */
-    public void setCost(float cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 

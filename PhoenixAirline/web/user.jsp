@@ -5,14 +5,14 @@
         <title>User Page</title>
     </head>
     <% //In case, if Admin session is not set, redirect to Login page
-        if ((request.getSession(false).getAttribute("user") == null)) {
+        if ((request.getSession(false).getAttribute("client") == null)) {
     %>
     <jsp:forward page="/login.jsp"></jsp:forward>
     <%}%>
     <body>
         <center><h2>User Home</h2></center>
 
-        Welcome <%=session.getAttribute("user")%>
+        Welcome <%=session.getAttribute("client")%>
 
         <div style="text-align: right"><a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a></div>
         <div>

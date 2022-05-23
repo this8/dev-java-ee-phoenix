@@ -9,7 +9,7 @@ public class ConnectToDB {
     public static Connection createConnection() {
         Connection con = null;
         String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/phoenix_airline";
+        String url = "jdbc:mysql://localhost:3306/phoenixairline_db";
         String username = "root";
         String password = "";
 
@@ -22,7 +22,7 @@ public class ConnectToDB {
             con = DriverManager.getConnection(url, username, password);
             System.out.println("Connection established -> " + con);
         } catch (SQLException e) {
-            System.out.println("Database connection failed!");
+            System.out.println("Database connection failed!" + e);
         }
 
         return con;

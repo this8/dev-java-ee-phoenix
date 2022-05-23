@@ -22,19 +22,19 @@ public class LoginAccess {
         try {
             con = ConnectToDB.createConnection();
             statement = con.createStatement();
-            resultSet = statement.executeQuery("select role,active_status from user where username='" + username + "' && password='" + password + "'");
+            resultSet = statement.executeQuery("SELECT role, is_active FROM user WHERE username='" + username + "' && password='" + password + "'");
 
             while (resultSet.next()) {
                 role = resultSet.getString("role");
-                active_status = resultSet.getInt("active_status");
+                active_status = resultSet.getInt("is_active");
 
                 System.out.println(role);
                 System.out.println(active_status);
 
                 if (active_status == 1) {
                     switch (role) {
-                        case "user":
-                            return "User_Role";
+                        case "client":
+                            return "Client_Role";
                         case "staffg1":
                             return "StaffG1_Role";
                         case "staffg2":
@@ -51,6 +51,7 @@ public class LoginAccess {
             }
             con.close();
         } catch (SQLException e) {
+            System.out.println(e);
         }
         return "Incorrect Username or Password";
     }
@@ -68,14 +69,15 @@ public class LoginAccess {
         try {
             con = ConnectToDB.createConnection();
             statement = con.createStatement();
-            resultSet = statement.executeQuery("select user_id from user where username='" + username + "' && password='" + password + "'");
+            resultSet = statement.executeQuery("SELECT id FROM user WHERE username='" + username + "' && password='" + password + "'");
 
             while (resultSet.next()) {
-                user_id = resultSet.getInt("user_id");
+                user_id = resultSet.getInt("id");
                 System.out.println(user_id);
             }
             con.close();
         } catch (SQLException e) {
+            System.out.println(e);
         }
         return user_id;
     }

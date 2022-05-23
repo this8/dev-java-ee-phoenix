@@ -24,7 +24,7 @@ public class RegisterAccess {
             active_status = 1;
         }
 
-        String query = "INSERT INTO user (first_name, last_name, email, username, password, address, phone_number , active_status, role) VALUES (?,?,?,?,?,?,?,?,?) ";
+        String query = "INSERT INTO user (first_name, last_name, email, username, password, phone, address, role, is_active) VALUES (?,?,?,?,?,?,?,?,?) ";
         int i = 0;
         try {
 
@@ -35,14 +35,15 @@ public class RegisterAccess {
             stmt.setString(3, email);
             stmt.setString(4, username);
             stmt.setString(5, password);
-            stmt.setString(6, address);
-            stmt.setString(7, phone_number);
-            stmt.setInt(8, active_status);
-            stmt.setString(9, role);
+            stmt.setString(6, phone_number);
+            stmt.setString(7, address);
+            stmt.setString(8, role);
+            stmt.setInt(9, active_status);
 
             i = stmt.executeUpdate();
             con.close();
         } catch (SQLException e) {
+            System.out.println(e);
 
         }
         if (i != 0) {
