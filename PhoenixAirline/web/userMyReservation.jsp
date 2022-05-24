@@ -28,6 +28,7 @@
                         <th>Gate</th>
                         <th>Seat Number</th>
                         <th>Total Price</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,15 +48,15 @@
                         <td><%=itr.next()%></td>
                         <td><%=itr.next()%></td>
                         <td><%=itr.next()%></td>
+                        <td><form action="userUpdateReservation.jsp" method="POST">
+                                <input type="hidden" name="ticket_id" value="" />
+                                <input type="submit" value="Update" />
+                            </form></td>
                     </tr>
                     <%}
                         }%>
                 </tbody>
             </table>
-            <form action="userUpdateReservation.jsp" method="POST">
-                <input type="hidden" name="ticket_id" value="" />
-                <input type="submit" value="Update" />
-            </form>
         </div>
     </body>
 </html>

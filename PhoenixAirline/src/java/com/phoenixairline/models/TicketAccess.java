@@ -33,6 +33,7 @@ public class TicketAccess {
                 String gate = resultSet.getString("gate");
                 float cost = resultSet.getFloat("cost");
                 String aircraftId = resultSet.getString("aircraft_flight");
+                int flight = resultSet.getInt("id");
 
                 flight_details.add(takeoff_airport);
                 flight_details.add(takeoff_time);
@@ -43,6 +44,7 @@ public class TicketAccess {
                 flight_details.add(gate);
                 flight_details.add(cost);
                 flight_details.add(aircraftId);
+                flight_details.add(flight);
             }
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -58,11 +60,11 @@ public class TicketAccess {
         int flightId = ticketBean.getFlightId();
         int seatId = ticketBean.getSeatId();
         String classId = ticketBean.getClassId();
-
+        
         con = ConnectToDB.createConnection();
         try {
             statement = con.createStatement();
-            String InsertQuery = "INSERT INTO ticket ('price', 'user_ticket', 'flight_ticket', 'seat_ticket', 'class_ticket') VALUES ('" + price + "', '" + userId + "', '" + flightId + "', '" + seatId + "', '" + classId + "');";
+            String InsertQuery = "INSERT INTO ticket (price, user_ticket, flight_ticket, seat_ticket, class_ticket) VALUES ('" + price + "', '" + userId + "', '" + flightId + "', '" + seatId + "', '" + classId + "');";
             i = statement.executeUpdate(InsertQuery);
             con.close();
         } catch (SQLException ex) {
@@ -84,14 +86,14 @@ public class TicketAccess {
             statement = con.createStatement();
             resultSet = statement.executeQuery("SELECT USER.first_name,flight.takeoff_airport,flight.landing_airport,flight.takeoff_date,flight.takeoff_time,flight.gate,seat.seat_name,ticket.price FROM ticket INNER JOIN flight ON ticket.flight_ticket = flight.id INNER JOIN seat ON ticket.seat_ticket = seat.id INNER JOIN USER ON ticket.user_ticket = USER.id WHERE USER.id = '" + currentUserId + "';");
             while (resultSet.next()) {
-                reservationList.add(resultSet.getString("user.first_name"));
+                reservationList.add(resultSet.getString("USER.first_name"));
                 reservationList.add(resultSet.getString("flight.takeoff_airport"));
                 reservationList.add(resultSet.getString("flight.landing_airport"));
                 reservationList.add(resultSet.getString("flight.takeoff_date"));
                 reservationList.add(resultSet.getString("flight.takeoff_time"));
                 reservationList.add(resultSet.getString("flight.gate"));
                 reservationList.add(resultSet.getString("seat.seat_name"));
-                reservationList.add(resultSet.getString("reservation.total_price"));
+                reservationList.add(resultSet.getString("ticket.price"));
             }
             con.close();
         } catch (SQLException ex) {

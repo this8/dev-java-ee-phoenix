@@ -1,19 +1,21 @@
 <%-- 
-    Document   : userUpdateReservation
-    Created on : May 21, 2022, 10:02:40 AM
+    Document   : AddReservationForm
+    Created on : May 24, 2022, 4:20:11 PM
     Author     : Heshan Kalhara
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Update My Reservation</title>
+        <title>Add reservation form</title>
     </head>
     <body>
-        <h1>Fill Below Reservation form to update your Reservations</h1>
-        <form action="UpdateTicketServlet" method="POST">
+        <form action="CreateTicketServlet" method="POST">
             <table border="1">
                 <%
                     if ((request.getAttribute("selectedResult") != null)) {
@@ -61,7 +63,7 @@
                     </tr>
                 <input type="hidden" name="flight_id" value="<%=itr.next()%>" readonly="readonly" />
                 <%}
-                    }%>
+            }%>
                 <tr>
                     <td>Class</td>
                     <td><select name="class" required>
@@ -89,7 +91,6 @@
                 </tbody>
 
             </table>
-
         </form>
     </body>
 </html>

@@ -20,22 +20,11 @@ public class CreateTicketServlet extends HttpServlet {
             throws ServletException, IOException {
    
         int ticketId = 1;
-        int flightId = Integer.parseInt(request.getParameter("flightId"));
-        System.out.println(flightId);
-        
-        //get flight details to form
-        List selectedValues = new ArrayList();
-        TicketAccess ticketaccess = new TicketAccess();
-        selectedValues = ticketaccess.getSelectedData(flightId);
-        request.setAttribute("selectedResult", selectedValues);
-        RequestDispatcher rd = request.getRequestDispatcher("AllFlightDetails.jsp");
-        rd.forward(request, response);
-        
-        
+        int flightId = Integer.parseInt(request.getParameter("flight_id"));
         String classId = request.getParameter("class");
         int seatId = Integer.parseInt(request.getParameter("seatNumber"));
-        int seats = Integer.parseInt(request.getParameter("seats"));//check with db date type
-        float price = Float.parseFloat(request.getParameter("flightPrice"));
+        int seats = Integer.parseInt(request.getParameter("seats"));
+        float price = Float.parseFloat(request.getParameter("cost"));
         switch (classId) {
             case "101":
                 price = (float) (price * 1.9)*seats;
@@ -52,11 +41,9 @@ public class CreateTicketServlet extends HttpServlet {
         int userId = (int) session.getAttribute("user_id");
         System.out.println("user id from session " + userId);
         
-        System.out.println("before send");
         Ticket ticketBean = new Ticket(ticketId,price,userId,flightId,seatId,classId);
         TicketAccess ticketAccess = new TicketAccess();
 
-        System.out.println("After send");
         String result = ticketAccess.createTicket(ticketBean);
         PrintWriter out = response.getWriter();
         out.println(result);
