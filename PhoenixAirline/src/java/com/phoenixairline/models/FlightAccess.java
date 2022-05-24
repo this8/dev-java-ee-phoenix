@@ -26,12 +26,12 @@ public class FlightAccess {
         String gate = flightBean.getGate();
         String cost = flightBean.getCost();
         String aircraftId = flightBean.getAircrafft_id();
-
+        
         con = ConnectToDB.createConnection();
 
         try {
             statement = con.createStatement();
-            String InsertQuery = "INSERT INTO flight (takeoff_airport,takeoff_time,takeoff_date,landing_airport,landing_time,landing_date,gate,cost,aircraft_flight) VALUES ('" + takeoff_airport + "','" + takeoff_time + "','" + takeoff_date + "','" + landing_airport + "','" + landing_time + "','" + landing_date + "','" + gate + "','" + cost + "'," + aircraftId + ");";
+            String InsertQuery = "INSERT INTO `flight` (`id`, `takeoff_airport`, `takeoff_time`, `takeoff_date`, `landing_airport`, `landing_time`, `landing_date`, `gate`, `cost`, `aircraft_flight`) VALUES (NULL, '"+takeoff_airport+"', '"+takeoff_time+"', '"+takeoff_date+"', '"+landing_airport+"', '"+landing_time+"', '"+landing_date+"', '"+gate+"', '"+cost+"', '"+aircraftId+"');";
             System.out.println("a");
             i = statement.executeUpdate(InsertQuery);
             System.out.println("b");
@@ -47,7 +47,8 @@ public class FlightAccess {
 
     public String UpdateFlightDetails(Flight flightBean) {
 
-        int flight_id = flightBean.getFlight_id();
+        String flight_id_String = flightBean.getFlight_id();
+        int flight_id = Integer.parseInt(flight_id_String);
         String gate = flightBean.getGate();
         String takeoff_airport = flightBean.getTakeoff_airport();
         String takeoff_time = flightBean.getTakeoff_time();
@@ -60,7 +61,7 @@ public class FlightAccess {
         con = ConnectToDB.createConnection();
         try {
             statement = con.createStatement();
-            String updateQuery = "UPDATE flight SET gate='" + gate + "',takeoff_airport='" + takeoff_airport + "',takeoff_time='" + takeoff_time + "',takeoff_date='" + takeoff_date + "',landing_airport='" + landing_airport + "',landing_time='" + landing_time + "',landing_date='" + landing_date + "',aircraft_flight='" + aircraftId + "' WHERE flight_id=" + flight_id + ";";
+            String updateQuery = "UPDATE flight SET gate='" + gate + "',takeoff_airport='" + takeoff_airport + "',takeoff_time='" + takeoff_time + "',takeoff_date='" + takeoff_date + "',landing_airport='" + landing_airport + "',landing_time='" + landing_time + "',landing_date='" + landing_date + "',aircraft_flight='" + aircraftId + "' WHERE id=" + flight_id + ";";
             i = statement.executeUpdate(updateQuery);
 
         } catch (SQLException ex) {
@@ -75,12 +76,13 @@ public class FlightAccess {
     }
 
     public String DeleteFlightDetails(Flight flightBean) {
-        int flight_id = flightBean.getFlight_id();
+        String flight_id_String = flightBean.getFlight_id();
+        int flight_id = Integer.parseInt(flight_id_String);
 
         con = ConnectToDB.createConnection();
         try {
             statement = con.createStatement();
-            String dltQuery = "DELETE FROM flight WHERE flight_id=" + flight_id + "; ";
+            String dltQuery = "DELETE FROM flight WHERE id=" + flight_id + "; ";
 
             i = statement.executeUpdate(dltQuery);
 

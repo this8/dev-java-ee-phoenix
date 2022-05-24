@@ -17,7 +17,7 @@ public class TicketDelete {
         con = ConnectToDB.createConnection();
         try {
             statement = con.createStatement();
-            String dltQuery = "DELETE FROM booking WHERE booking_id='" + bookingId + "';";
+            String dltQuery = "DELETE FROM booking WHERE id='" + bookingId + "';";
 
             i = statement.executeUpdate(dltQuery);
 

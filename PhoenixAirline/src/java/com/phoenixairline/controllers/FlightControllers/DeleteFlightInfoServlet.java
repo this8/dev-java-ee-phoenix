@@ -19,7 +19,7 @@ public class DeleteFlightInfoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
-        int FlightId = Integer.parseInt(request.getParameter("flightId"));
+        String FlightId = request.getParameter("flightId");
 
         Flight flightBean = new Flight(FlightId);
         FlightAccess flightAccess = new FlightAccess();

@@ -22,7 +22,7 @@ public class UpdateFlightInfoServlet extends HttpServlet {
             throws ServletException, IOException {
 
         response.setContentType("text/html");
-        int FlightId = Integer.parseInt(request.getParameter("flightId"));
+        String FlightId = request.getParameter("flightId");
         String Takeoff_airport = request.getParameter("takeoff_airport");
         String Takeoff_time = request.getParameter("takeoff_time");
         String Takeoff_date = request.getParameter("takeoff_date");

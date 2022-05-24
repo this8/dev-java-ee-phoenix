@@ -2,7 +2,7 @@ package com.phoenixairline.models;
 
 public class Flight {
 
-    private int flight_id;
+    private String flight_id;
     private String takeoff_airport;
     private String takeoff_time;
     private String takeoff_date;
@@ -13,7 +13,7 @@ public class Flight {
     private String cost;
     private String aircraft_id;
 
-    public Flight(int flight_id, String takeoff_airport, String takeoff_time, String takeoff_date, String landing_airport, String landing_time, String landing_date, String gate, String cost, String aircraft_id) {
+    public Flight(String flight_id, String takeoff_airport, String takeoff_time, String takeoff_date, String landing_airport, String landing_time, String landing_date, String gate, String cost, String aircraft_id) {
         super();
         this.flight_id = flight_id;
         this.takeoff_airport = takeoff_airport;
@@ -31,7 +31,7 @@ public class Flight {
         super();
     }
 
-    public Flight(int flight_id) {
+    public Flight(String flight_id) {
         super();
         this.flight_id = flight_id;
     }
@@ -43,11 +43,11 @@ public class Flight {
         this.takeoff_airport = takeoff_airport;
     }
 
-    public int getFlight_id() {
+    public String getFlight_id() {
         return flight_id;
     }
 
-    public void setFlight_id(int flight_id) {
+    public void setFlight_id(String flight_id) {
         this.flight_id = flight_id;
     }
 
