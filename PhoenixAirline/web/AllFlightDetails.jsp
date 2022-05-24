@@ -46,6 +46,7 @@
             <th>Gate</th>
             <th>Cost</th>
             <th>Aircraft</th>
+            <th>Action</th>
         </thead>
         <tbody>
             <%
@@ -56,6 +57,8 @@
                     while (itr.hasNext()) {
             %>
             <tr>
+        <form action="CreateTicketServlet" method="POST">
+                <td><input type="hidden" name="flightId" value="<%=itr.next()%>"/></td>
                 <td><%=itr.next()%></td>
                 <td><%=itr.next()%></td>
                 <td><%=itr.next()%></td>
@@ -65,7 +68,10 @@
                 <td><%=itr.next()%></td>
                 <td><%=itr.next()%></td>
                 <td><%=itr.next()%></td>
-                <td><%=itr.next()%></td>
+                <td><input type="submit" value="Book Reservation" /></td>
+        </form>
+
+                
             </tr>
             <%}
                 }%>
@@ -74,33 +80,64 @@
 
     <form action="CreateTicketServlet" method="POST">
         <table border="1">
+            <%
+                if ((request.getAttribute("selectedResult") != null)) {
+                    List data = new ArrayList();
+                    data = (List) request.getAttribute("selectedResult");
+                    Iterator itr = data.iterator();
+                    while (itr.hasNext()) {
+            %>
             <tbody>
                 <tr>
                     <td>TO</td>
-                    <td><input type="text" name="to" value="" required/></td>
+                    <td><%=itr.next()%></td>
+                </tr>
+                <tr>
+                    <td>Air Time</td>
+                    <td><%=itr.next()%></td>
+                </tr>
+                <tr>
+                    <td>Takeoff Date</td>
+                    <td><%=itr.next()%></td>
                 </tr>
                 <tr>
                     <td>From</td>
-                    <td><input type="text" name="from" value="" required/></td>
+                    <td><%=itr.next()%></td>
                 </tr>
                 <tr>
-                    <td>Passport Number</td>
-                    <td><input type="text" name="passport" value="" /></td>
+                    <td>Land Time</td>
+                    <td><%=itr.next()%></td>
                 </tr>
                 <tr>
-                    <td>Date</td>
-                    <td><input type="text" name="date" value="" /></td>
+                    <td>Land Date</td>
+                    <td><%=itr.next()%></td>
                 </tr>
                 <tr>
-                    <td>Aircraft Id</td>
-                    <td><input type="text" name="aircraftNumber" value="" required/></td>
+                    <td>Gate</td>
+                    <td><%=itr.next()%></td>
+                </tr>
+                <tr>
+                    <td>Cost</td>
+                    <td><%=itr.next()%></td>
+                </tr>
+                <tr>
+                    <td>Aircraft</td>
+                    <td><%=itr.next()%></td>
                 </tr>
                 <tr>
                     <td>Class</td>
                     <td><select name="class" required>
-                            <option value="business">Business</option>
-                            <option value="economy">Economy</option>
-                            <option value="1st class">1st class</option>
+                            <option value="101">1st class</option>
+                            <option value="102">Business</option>
+                            <option value="103">Economy</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>Seat</td>
+                    <td><select name="seatNumber" required>
+                            <option value="1">1A</option>
+                            <option value="2">B1</option>
+                            <option value="3">C1</option>
                         </select></td>
                 </tr>
                 <tr>
@@ -112,6 +149,8 @@
                     <td><input type="submit" value="Book Reservation" /></td>
                 </tr>
             </tbody>
+            <%}
+                }%>
         </table>
     </form>
 </body>

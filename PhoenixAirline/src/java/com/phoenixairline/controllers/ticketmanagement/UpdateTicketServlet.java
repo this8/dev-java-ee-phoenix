@@ -72,7 +72,7 @@ public class UpdateTicketServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int bookingId = Integer.parseInt(request.getParameter("reservationId"));
+        int ticketId = Integer.parseInt(request.getParameter("reservationId"));
         int userId = 0;//get current userId and enter here
         int fhacId = 0;//get fhacId according booking table
         String passportNumber = request.getParameter("passportNumber");
@@ -84,7 +84,7 @@ public class UpdateTicketServlet extends HttpServlet {
         userId = (int) session.getAttribute("user_id");
         System.out.println("user id from session " + userId);
 
-        Ticket ticketBean = new Ticket(bookingId, userId, fhacId, passportNumber, date, classType, seats);
+        Ticket ticketBean = new Ticket();
         TicketAccess updateTicket = new TicketAccess();
         String updateResult = updateTicket.updateTicket(ticketBean);
         PrintWriter out = response.getWriter();
