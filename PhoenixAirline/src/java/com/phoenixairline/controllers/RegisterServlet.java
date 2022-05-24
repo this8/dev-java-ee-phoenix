@@ -38,6 +38,7 @@ public class RegisterServlet extends HttpServlet {
 
         String result = registerAccess.Registerindb(registerBean);
         if (result.equals("User is registered")) {
+            request.setAttribute("errMessage", result);
             RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
             dispatcher.include(request, response);
         } else {

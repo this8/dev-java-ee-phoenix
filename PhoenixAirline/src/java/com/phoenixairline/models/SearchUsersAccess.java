@@ -62,9 +62,9 @@ public class SearchUsersAccess {
             System.out.println(st);
 
             if (st.equals("username")) {
-                resultSet = statement.executeQuery("SELECT USER.first_name, USER.last_name, USER.email, USER.username, USER.role, SESSION.login_time, SESSION.ip_address FROM SESSION INNER JOIN USER ON SESSION .user_session = USER.id where USER.username like'%" + su + "%';");
+                resultSet = statement.executeQuery("SELECT USER.first_name, USER.last_name, USER.email, USER.username, USER.role, SESSION.login_time, SESSION.ip_address FROM SESSION INNER JOIN USER ON SESSION .user_session = USER.id where USER.username like'%" + su + "%' ORDER BY SESSION.id DESC;");
             } else {
-                resultSet = statement.executeQuery("SELECT USER.first_name, USER.last_name, USER.email, USER.username, USER.role, SESSION.login_time, SESSION.ip_address FROM SESSION INNER JOIN USER ON SESSION .user_session = USER.id where USER.email like'%" + su + "%';");
+                resultSet = statement.executeQuery("SELECT USER.first_name, USER.last_name, USER.email, USER.username, USER.role, SESSION.login_time, SESSION.ip_address FROM SESSION INNER JOIN USER ON SESSION .user_session = USER.id where USER.email like'%" + su + "%' ORDER BY SESSION.id DESC;");
             }
 
             while (resultSet.next()) {

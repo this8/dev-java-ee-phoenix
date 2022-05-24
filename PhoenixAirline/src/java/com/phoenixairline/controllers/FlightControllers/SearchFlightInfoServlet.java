@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package com.phoenixairline.controllers.FlightControllers;
 
+import com.phoenixairline.models.Flight;
 import com.phoenixairline.models.FlightAccess;
 import java.io.IOException;
 import java.util.List;
@@ -13,25 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author dell
- */
 public class SearchFlightInfoServlet extends HttpServlet {
-
-    private static final long serialVersionUID = 1L;
-
-    public SearchFlightInfoServlet() {
-        super();
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String takeoff_date = request.getParameter("takeoff_date");
+        String takeoff_airport = request.getParameter("takeoff_airport");
+        String landing_airport = request.getParameter("landing_airport");
+        System.out.println(takeoff_date);
 
-        String searchValue = request.getParameter("searchData");
-        String searchCategory = request.getParameter("searchCategory");
+        Flight flightBean = new Flight(takeoff_date, landing_airport, takeoff_airport);
+
         FlightAccess flightAccess = new FlightAccess();
-        List SearchFlightDetails = flightAccess.searchData(searchValue, searchCategory);
+        List SearchFlightDetails = flightAccess.searchData(flightBean);
         request.setAttribute("result", SearchFlightDetails);
         RequestDispatcher rd = request.getRequestDispatcher("ResultsSearchFlights.jsp");
         rd.forward(request, response);

@@ -21,7 +21,11 @@
                         <td><input type="password" name="password" /></td>
                     </tr>
                     <tr>
-                        <td><span style="color:red"><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%></span></td>
+                        <td>
+                            <%=(request.getAttribute("errMessage") == "User is registered") ? "<span style = 'color:green'>" : "<span style = 'color:red'>"%>
+                            <%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%>
+                            </span>
+                        </td>
                     </tr>
                     <tr>
                         <td></td>

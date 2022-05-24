@@ -15,8 +15,10 @@ public class AddFlightInfoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+        System.out.println("UP");
         response.setContentType("text/html");
-        int FlightId = Integer.parseInt(request.getParameter("flightId"));
+        String FlightId = request.getParameter("flightId");
+        System.out.println("Dwon");
         String Takeoff_airport = request.getParameter("takeoff_airport");
         String Takeoff_time = request.getParameter("takeoff_time");
         String Takeoff_date = request.getParameter("takeoff_date");

@@ -30,28 +30,28 @@
                         <th>Total Price</th>
                     </tr>
                 </thead>
-            <tbody>
-                <%
-                    if ((request.getAttribute("reservationResult") != null)) {
-                        List data = new ArrayList();
-                        data = (List) request.getAttribute("reservationResult");
-                        Iterator itr = data.iterator();
-                        while (itr.hasNext()) {
-                %>
-                <tr>
-                    <td><%=itr.next()%></td>
-                    <td><%=itr.next()%></td>
-                    <td><%=itr.next()%></td>
-                    <td><%=itr.next()%></td>
-                    <td><%=itr.next()%></td>
-                    <td><%=itr.next()%></td>
-                    <td><%=itr.next()%></td>
-                    <td><%=itr.next()%></td>
-                </tr>
-                <%}
-                    }%>
-            </tbody>
-        </table>
+                <tbody>
+                    <%
+                        if ((request.getAttribute("reservationResult") != null)) {
+                            List data = new ArrayList();
+                            data = (List) request.getAttribute("reservationResult");
+                            Iterator itr = data.iterator();
+                            while (itr.hasNext()) {
+                    %>
+                    <tr>
+                        <td><%=itr.next()%></td>
+                        <td><%=itr.next()%></td>
+                        <td><%=itr.next()%></td>
+                        <td><%=itr.next()%></td>
+                        <td><%=itr.next()%></td>
+                        <td><%=itr.next()%></td>
+                        <td><%=itr.next()%></td>
+                        <td><%=itr.next()%></td>
+                    </tr>
+                    <%}
+                        }%>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>

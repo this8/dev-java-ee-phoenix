@@ -17,16 +17,43 @@
     </head>
     <body>
         <h1>Searched Results</h1>
-
-
-        <%
-            List searchFlight_details = new ArrayList();
-            searchFlight_details = (List) request.getAttribute("result");
-            Iterator it = searchFlight_details.iterator();
-            while (it.hasNext()) {
-                out.println(it.next());
-            }
-        %>
+        <table border="1">
+            <thead>
+                <th>ID</th>
+                <th>Takeoff Airport</th>
+                <th>Takeoff Time</th>
+                <th>Takeoff Date</th>
+                <th>Landing Airport</th>
+                <th>Landing Time</th>
+                <th>Landing Date</th>
+                <th>Gate</th>
+                <th>Cost</th>
+                <th>Aircraft</th>
+            </thead>
+            <tbody>
+                <%
+                    if ((request.getAttribute("result") != null)) {
+                        List data = new ArrayList();
+                        data = (List) request.getAttribute("result");
+                        Iterator itr = data.iterator();
+                        while (itr.hasNext()) {
+                %>
+                <tr>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                    <td><%=itr.next()%></td>
+                </tr>
+                <%}
+                    }%>
+            </tbody>
+        </table>
         <form action="CreateTicketServlet" method="POST">
             <table border="1">
                 <tbody>
