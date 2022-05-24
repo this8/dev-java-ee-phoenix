@@ -4,6 +4,9 @@ import com.phoenixairline.models.Ticket;
 import com.phoenixairline.models.TicketAccess;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,19 +18,30 @@ public class CreateTicketServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        int userId = 0;//get user id from sesstion
-        int fhacId = 0;//get fhacId from backend
-        String passport = request.getParameter("passport");
-        String date = request.getParameter("date");
-        String classType = request.getParameter("class");
-        int seats = Integer.parseInt(request.getParameter("seats"));//check with db date type
+   
+        int ticketId = 1;
+        int flightId = Integer.parseInt(request.getParameter("flight_id"));
+        String classId = request.getParameter("class");
+        int seatId = Integer.parseInt(request.getParameter("seatNumber"));
+        int seats = Integer.parseInt(request.getParameter("seats"));
+        float price = Float.parseFloat(request.getParameter("cost"));
+        switch (classId) {
+            case "101":
+                price = (float) (price * 1.9)*seats;
+                break;
+            case "102":
+                price = (float) (price * 1.5)*seats;
+                break;
+            default:
+                price = price*seats;
+                break;
+        }
 
         HttpSession session = request.getSession();
-        userId = (int) session.getAttribute("user_id");
+        int userId = (int) session.getAttribute("user_id");
         System.out.println("user id from session " + userId);
-
-        Ticket ticketBean = new Ticket(userId, fhacId, passport, date, classType, seats);
+        
+        Ticket ticketBean = new Ticket(ticketId,price,userId,flightId,seatId,classId);
         TicketAccess ticketAccess = new TicketAccess();
 
         String result = ticketAccess.createTicket(ticketBean);

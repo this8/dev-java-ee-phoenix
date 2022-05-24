@@ -4,21 +4,22 @@
  */
 package com.phoenixairline.controllers.ticketmanagement;
 
-import com.phoenixairline.models.Ticket;
 import com.phoenixairline.models.TicketAccess;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Heshan Kalhara
  */
-public class UpdateTicketServlet extends HttpServlet {
+public class GetSelectedTicketData extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,15 +33,15 @@ public class UpdateTicketServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateTicketServlet</title>");
+            out.println("<title>Servlet GetSelectedTicketData</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UpdateTicketServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet GetSelectedTicketData at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,7 +59,7 @@ public class UpdateTicketServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doPost(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -72,23 +73,18 @@ public class UpdateTicketServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int ticketId = Integer.parseInt(request.getParameter("reservationId"));
-        int userId = 0;//get current userId and enter here
-        int fhacId = 0;//get fhacId according booking table
-        String passportNumber = request.getParameter("passportNumber");
-        String date = request.getParameter("date");
-        String classType = request.getParameter("class");
-        int seats = Integer.parseInt(request.getParameter("seats"));
-
-        HttpSession session = request.getSession();
-        userId = (int) session.getAttribute("user_id");
-        System.out.println("user id from session " + userId);
-
-        Ticket ticketBean = new Ticket();
-        TicketAccess updateTicket = new TicketAccess();
-        String updateResult = updateTicket.updateTicket(ticketBean);
-        PrintWriter out = response.getWriter();
-        out.println(updateResult);
+        String ticket_id = request.getParameter("ticket_id");
+        System.out.println(ticket_id);//for bug fixies
+        int ticketId = Integer.parseInt(ticket_id);
+        
+        
+        //get flight details to form
+        List selectedValues = new ArrayList();
+        TicketAccess ticketaccess = new TicketAccess();
+        selectedValues = ticketaccess.getSelectedTicketData(ticketId);
+        request.setAttribute("selectedTicketResult", selectedValues);
+        RequestDispatcher rd = request.getRequestDispatcher("userUpdateReservation.jsp");
+        rd.forward(request, response);
     }
 
     /**

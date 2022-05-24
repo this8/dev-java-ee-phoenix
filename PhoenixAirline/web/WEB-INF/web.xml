@@ -63,6 +63,18 @@
         <servlet-name>SearchUsers_aServlet</servlet-name>
         <servlet-class>com.phoenixairline.controllers.SearchUsers_aServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ApproveServlet</servlet-name>
+        <servlet-class>com.phoenixairline.controllers.ApproveServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetSelectedData</servlet-name>
+        <servlet-class>com.phoenixairline.controllers.FlightControllers.GetSelectedData</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetSelectedTicketData</servlet-name>
+        <servlet-class>com.phoenixairline.controllers.ticketmanagement.GetSelectedTicketData</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddFlightInfoServlet</servlet-name>
         <url-pattern>/AddFlightInfoServlet</url-pattern>
@@ -122,6 +134,18 @@
     <servlet-mapping>
         <servlet-name>SearchUsers_aServlet</servlet-name>
         <url-pattern>/SearchUsers_aServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApproveServlet</servlet-name>
+        <url-pattern>/ApproveServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetSelectedData</servlet-name>
+        <url-pattern>/GetSelectedData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetSelectedTicketData</servlet-name>
+        <url-pattern>/GetSelectedTicketData</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

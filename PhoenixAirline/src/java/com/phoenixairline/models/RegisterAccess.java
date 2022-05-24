@@ -4,11 +4,14 @@ import com.phoenixairline.util.ConnectToDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class RegisterAccess {
 
+    Connection con = ConnectToDB.createConnection();
+    Statement statement;
+
     public String Registerindb(User registerBean) {
-        Connection con = ConnectToDB.createConnection();
 
         String first_name = registerBean.getFirst_name();
         String last_name = registerBean.getLast_name();
@@ -52,4 +55,24 @@ public class RegisterAccess {
             return "Error: User is not registered";
         }
     }
+
+    public String approveUser(String user_id) {
+        int i = 0;
+        try {
+            statement = con.createStatement();
+            String appQuery = "UPDATE user SET is_active=1 WHERE id='" + user_id + "';";
+
+            i = statement.executeUpdate(appQuery);
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+        if (i == 1) {
+            return "Approved";
+        } else {
+            return "Error";
+        }
+    }
+
 }

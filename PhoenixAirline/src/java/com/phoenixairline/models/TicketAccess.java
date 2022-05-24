@@ -14,22 +14,57 @@ public class TicketAccess {
     Statement statement = null;
     int i;
     ResultSet resultSet = null;
-//Insert ticket details method
 
-    public String createTicket(Ticket ticketBean) {
-        //get values from ticketBean
-        int userId = ticketBean.getUserId();
-        int fhacId = ticketBean.getFhacId();
-        String passportNumber = ticketBean.getPassportNumber();
-        String bookingDate = ticketBean.getBookingDate();
-        String classType = ticketBean.getClassType();
-        int numberOfSeats = ticketBean.getNumberOfSeats();
-        String totalPrice = "";//calculate price and enter here
+    public List getSelectedData(int flightId) {
 
+        List flight_details = new ArrayList();
         con = ConnectToDB.createConnection();
         try {
             statement = con.createStatement();
-            String InsertQuery = "INSERT INTO booking (user_id,fhac_id,passport_number,booking_date,class,number_of_seats,total_price) Values ('" + userId + "','" + fhacId + "','" + passportNumber + "','" + bookingDate + "','" + classType + "','" + numberOfSeats + "','" + totalPrice + "');";
+            resultSet = statement.executeQuery("SELECT * FROM flight WHERE id='"+flightId+"';");
+
+            while (resultSet.next()) {
+                String takeoff_airport = resultSet.getString("takeoff_airport");
+                String takeoff_time = resultSet.getString("takeoff_time");
+                String takeoff_date = resultSet.getString("takeoff_date");
+                String landing_airport = resultSet.getString("landing_airport");
+                String landing_time = resultSet.getString("landing_time");
+                String landing_date = resultSet.getString("landing_date");
+                String gate = resultSet.getString("gate");
+                float cost = resultSet.getFloat("cost");
+                String aircraftId = resultSet.getString("aircraft_flight");
+                int flight = resultSet.getInt("id");
+
+                flight_details.add(takeoff_airport);
+                flight_details.add(takeoff_time);
+                flight_details.add(takeoff_date);
+                flight_details.add(landing_airport);
+                flight_details.add(landing_time);
+                flight_details.add(landing_date);
+                flight_details.add(gate);
+                flight_details.add(cost);
+                flight_details.add(aircraftId);
+                flight_details.add(flight);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return flight_details;
+    }
+
+//Insert ticket details method
+    public String createTicket(Ticket ticketBean) {
+        //get values from ticketBean
+        float price = ticketBean.getPrice();
+        int userId = ticketBean.getUserId();
+        int flightId = ticketBean.getFlightId();
+        int seatId = ticketBean.getSeatId();
+        String classId = ticketBean.getClassId();
+        
+        con = ConnectToDB.createConnection();
+        try {
+            statement = con.createStatement();
+            String InsertQuery = "INSERT INTO ticket (price, user_ticket, flight_ticket, seat_ticket, class_ticket) VALUES ('" + price + "', '" + userId + "', '" + flightId + "', '" + seatId + "', '" + classId + "');";
             i = statement.executeUpdate(InsertQuery);
             con.close();
         } catch (SQLException ex) {
@@ -49,16 +84,16 @@ public class TicketAccess {
         con = ConnectToDB.createConnection();
         try {
             statement = con.createStatement();
-            resultSet = statement.executeQuery("SELECT user.first_name,flight.takeoff_airport,flight.landing_airport,flight.takeoff_date,flight.takeoff_time,flight.gate,seat.seat_name,reservation.total_price FROM ticket INNER JOIN flight ON ticket.flight_ticket=flight.id INNER JOIN seat ON ticket.seat_ticket=seat.id INNER JOIN reservation ON ticket.reservation_ticket=reservation.id INNER JOIN user ON reservation.user_reservation=user.id WHERE user.id='" + currentUserId + "';");
+            resultSet = statement.executeQuery("SELECT USER.first_name,flight.takeoff_airport,flight.landing_airport,flight.takeoff_date,flight.takeoff_time,flight.gate,seat.seat_name,ticket.price FROM ticket INNER JOIN flight ON ticket.flight_ticket = flight.id INNER JOIN seat ON ticket.seat_ticket = seat.id INNER JOIN USER ON ticket.user_ticket = USER.id WHERE USER.id = '" + currentUserId + "';");
             while (resultSet.next()) {
-                reservationList.add(resultSet.getString("user.first_name"));
+                reservationList.add(resultSet.getString("USER.first_name"));
                 reservationList.add(resultSet.getString("flight.takeoff_airport"));
                 reservationList.add(resultSet.getString("flight.landing_airport"));
                 reservationList.add(resultSet.getString("flight.takeoff_date"));
                 reservationList.add(resultSet.getString("flight.takeoff_time"));
                 reservationList.add(resultSet.getString("flight.gate"));
                 reservationList.add(resultSet.getString("seat.seat_name"));
-                reservationList.add(resultSet.getString("reservation.total_price"));
+                reservationList.add(resultSet.getString("ticket.price"));
             }
             con.close();
         } catch (SQLException ex) {
@@ -71,17 +106,12 @@ public class TicketAccess {
     public String updateTicket(Ticket ticketBean) {
         int bookingId = ticketBean.getUserId();
         int userId = ticketBean.getUserId();
-        int fhacId = ticketBean.getFhacId();
-        String passportNumber = ticketBean.getPassportNumber();
-        String bookingDate = ticketBean.getBookingDate();
-        String classType = ticketBean.getClassType();
-        int numberOfSeats = ticketBean.getNumberOfSeats();
         String totalPrice = "";//calculate price and enter here
 
         con = ConnectToDB.createConnection();
         try {
             statement = con.createStatement();
-            String updateQuery = "UPDATE INTO booking SET fhac_id='" + fhacId + "',passport_number='" + passportNumber + "',booking_date='" + bookingDate + "',class='" + classType + "',number_of_seats='" + numberOfSeats + "',total_price='" + totalPrice + "' WHERE booking_id='" + bookingId + "' AND user_id='" + userId + "' ;";
+            String updateQuery = "";
             i = statement.executeUpdate(updateQuery);
             con.close();
         } catch (SQLException ex) {

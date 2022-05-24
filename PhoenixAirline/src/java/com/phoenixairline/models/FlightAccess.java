@@ -26,12 +26,12 @@ public class FlightAccess {
         String gate = flightBean.getGate();
         String cost = flightBean.getCost();
         String aircraftId = flightBean.getAircrafft_id();
-        
+
         con = ConnectToDB.createConnection();
 
         try {
             statement = con.createStatement();
-            String InsertQuery = "INSERT INTO `flight` (`id`, `takeoff_airport`, `takeoff_time`, `takeoff_date`, `landing_airport`, `landing_time`, `landing_date`, `gate`, `cost`, `aircraft_flight`) VALUES (NULL, '"+takeoff_airport+"', '"+takeoff_time+"', '"+takeoff_date+"', '"+landing_airport+"', '"+landing_time+"', '"+landing_date+"', '"+gate+"', '"+cost+"', '"+aircraftId+"');";
+            String InsertQuery = "INSERT INTO `flight` (`id`, `takeoff_airport`, `takeoff_time`, `takeoff_date`, `landing_airport`, `landing_time`, `landing_date`, `gate`, `cost`, `aircraft_flight`) VALUES (NULL, '" + takeoff_airport + "', '" + takeoff_time + "', '" + takeoff_date + "', '" + landing_airport + "', '" + landing_time + "', '" + landing_date + "', '" + gate + "', '" + cost + "', '" + aircraftId + "');";
             System.out.println("a");
             i = statement.executeUpdate(InsertQuery);
             System.out.println("b");

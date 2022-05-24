@@ -2,49 +2,51 @@ package com.phoenixairline.models;
 
 public class Ticket {
 
-    private int bookingId;
+    private int ticketId;
+    private float price;
     private int userId;
-    private int fhacId;
-    private String passportNumber;
-    private String bookingDate;
-    private String classType;
-    private int numberOfSeats;
+    private int flightId;
+    private int seatId;
+    private String classId;
 
-    public Ticket(int bookingId, int userId, int fhacId, String passportNumber, String bookingDate, String classType, int numberOfSeats) {
-        this.bookingId = bookingId;
+    public Ticket(int ticketId, float price, int userId, int flightId, int seatId, String classId) {
+        this.ticketId = ticketId;
+        this.price = price;
         this.userId = userId;
-        this.fhacId = fhacId;
-        this.passportNumber = passportNumber;
-        this.bookingDate = bookingDate;
-        this.classType = classType;
-        this.numberOfSeats = numberOfSeats;
+        this.flightId = flightId;
+        this.seatId = seatId;
+        this.classId = classId;
     }
 
-    public Ticket(int userId, int fhacId, String passportNumber, String bookingDate, String classType, int numberOfSeats) {
-        this.userId = userId;
-        this.fhacId = fhacId;
-        this.passportNumber = passportNumber;
-        this.bookingDate = bookingDate;
-        this.classType = classType;
-        this.numberOfSeats = numberOfSeats;
+    public Ticket(){
+        super();
     }
-
-    public Ticket(int bookingId) {
-        this.bookingId = bookingId;
+    /**
+     * @return the ticketId
+     */
+    public int getTicketId() {
+        return ticketId;
     }
 
     /**
-     * @return the bookingId
+     * @param ticketId the ticketId to set
      */
-    public int getBookingId() {
-        return bookingId;
+    public void setTicketId(int ticketId) {
+        this.ticketId = ticketId;
     }
 
     /**
-     * @param bookingId the bookingId to set
+     * @return the price
      */
-    public void setBookingId(int bookingId) {
-        this.bookingId = bookingId;
+    public float getPrice() {
+        return price;
+    }
+
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(float price) {
+        this.price = price;
     }
 
     /**
@@ -62,73 +64,47 @@ public class Ticket {
     }
 
     /**
-     * @return the fhacId
+     * @return the flightId
      */
-    public int getFhacId() {
-        return fhacId;
+    public int getFlightId() {
+        return flightId;
     }
 
     /**
-     * @param fhacId the fhacId to set
+     * @param flightId the flightId to set
      */
-    public void setFhacId(int fhacId) {
-        this.fhacId = fhacId;
+    public void setFlightId(int flightId) {
+        this.flightId = flightId;
     }
 
     /**
-     * @return the passportNumber
+     * @return the seatId
      */
-    public String getPassportNumber() {
-        return passportNumber;
+    public int getSeatId() {
+        return seatId;
     }
 
     /**
-     * @param passportNumber the passportNumber to set
+     * @param seatId the seatId to set
      */
-    public void setPassportNumber(String passportNumber) {
-        this.passportNumber = passportNumber;
+    public void setSeatId(int seatId) {
+        this.seatId = seatId;
     }
 
     /**
-     * @return the bookingDate
+     * @return the classId
      */
-    public String getBookingDate() {
-        return bookingDate;
+    public String getClassId() {
+        return classId;
     }
 
     /**
-     * @param bookingDate the bookingDate to set
+     * @param classId the classId to set
      */
-    public void setBookingDate(String bookingDate) {
-        this.bookingDate = bookingDate;
+    public void setClassId(String classId) {
+        this.classId = classId;
     }
 
-    /**
-     * @return the classType
-     */
-    public String getClassType() {
-        return classType;
-    }
-
-    /**
-     * @param classType the classType to set
-     */
-    public void setClassType(String classType) {
-        this.classType = classType;
-    }
-
-    /**
-     * @return the numberOfSeats
-     */
-    public int getNumberOfSeats() {
-        return numberOfSeats;
-    }
-
-    /**
-     * @param numberOfSeats the numberOfSeats to set
-     */
-    public void setNumberOfSeats(int numberOfSeats) {
-        this.numberOfSeats = numberOfSeats;
-    }
+    
 
 }
