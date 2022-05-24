@@ -95,6 +95,7 @@ public class TicketAccess {
                 reservationList.add(resultSet.getString("seat.seat_name"));
                 reservationList.add(resultSet.getString("ticket.price"));
                 reservationList.add(resultSet.getString("ticket.id"));
+                reservationList.add(resultSet.getString("ticket.id"));
             }
             con.close();
         } catch (SQLException ex) {

@@ -62,35 +62,35 @@
                         <td>Cost</td>
                         <td><input type="text" name="cost" value="<%=itr.next()%>" readonly="readonly" /></td>
                     </tr>
-                
-                <tr>
-                    <td>Class</td>
-                    <td><select name="class" required>
-                            <option value="<%=itr.next()%>"><%=itr.next()%></option>
-                            <option value="101">1st class</option>
-                            <option value="102">Business</option>
-                            <option value="103">Economy</option>
-                        </select></td>
-                </tr>
-                <tr>
-                    <td>Seat</td>
-                    <td><select name="seatNumber" required>
-                            <option value="<%=itr.next()%>"><%=itr.next()%></option>
-                            <option value="1">1A</option>
-                            <option value="2">B1</option>
-                            <option value="3">C1</option>
-                        </select></td>
-                </tr>
-                                <%}
-                    }%>
-                <tr>
-                    <td>Number of seats</td>
-                    <td><input type="text" placeholder="Enter" name="seats" value="" size="3" required/></td>
-                </tr>
-                <tr>
-                    <td><input type="reset" value="Cancel" /></td>
-                    <td><input type="submit" value="Update Reservation" /></td>
-                </tr>
+
+                    <tr>
+                        <td>Class</td>
+                        <td><select name="class" required>
+                                <option value="<%=itr.next()%>"><%=itr.next()%></option>
+                                <option value="101">1st class</option>
+                                <option value="102">Business</option>
+                                <option value="103">Economy</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <td>Seat</td>
+                        <td><select name="seatNumber" required>
+                                <option value="<%=itr.next()%>"><%=itr.next()%></option>
+                                <option value="1">1A</option>
+                                <option value="2">B1</option>
+                                <option value="3">C1</option>
+                            </select></td>
+                    </tr>
+                    <%}
+                                    }%>
+                    <tr>
+                        <td>Number of seats</td>
+                        <td><input type="text" placeholder="Enter" name="seats" value="" size="3" required/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="reset" value="Cancel" /></td>
+                        <td><input type="submit" value="Update Reservation" /></td>
+                    </tr>
 
                 </tbody>
 

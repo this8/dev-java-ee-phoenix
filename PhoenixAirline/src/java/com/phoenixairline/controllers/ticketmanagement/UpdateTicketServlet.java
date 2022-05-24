@@ -73,13 +73,9 @@ public class UpdateTicketServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int ticketId = Integer.parseInt(request.getParameter("id"));
-        System.out.println(ticketId);
         String classId = request.getParameter("class");
-        System.out.println(classId);
         int seatId = Integer.parseInt(request.getParameter("seatNumber"));
-        System.out.println(seatId);
         int seats = Integer.parseInt(request.getParameter("seats"));
-        System.out.println(seats);
         float cost = Float.parseFloat(request.getParameter("cost"));
         float price = 0;
         switch (classId) {
@@ -93,7 +89,6 @@ public class UpdateTicketServlet extends HttpServlet {
                 price = cost*seats;
                 break;
         }
-        System.out.println(price);
         HttpSession session = request.getSession();
         int userId = (int) session.getAttribute("user_id");
         System.out.println("user id from session " + userId);
