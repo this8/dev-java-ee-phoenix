@@ -15,7 +15,7 @@
         <h1>Add Flight Details</h1>
         <div>
             <form method="post" action="<%=request.getContextPath()%>/AddFlightInfoServlet">
-                Flight id <input type="hidden" name="flight_Id" value="111"/><br>
+                Flight id <input type="hidden" name="flight_Id" value="1"/><br>
                 Aircraft Id <input type="text" name="aircraft_id">
                 Takeoff_airport  <input type="text" name="takeoff_airport"/><br>
                 Takeoff Time  <input type="text" name="takeoff_time"/><br>

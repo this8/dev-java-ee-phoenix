@@ -19,6 +19,16 @@
         <h1>Searched Results</h1>
         <table border="1">
             <thead>
+                <th>ID</th>
+                <th>Takeoff Airport</th>
+                <th>Takeoff Time</th>
+                <th>Takeoff Date</th>
+                <th>Landing Airport</th>
+                <th>Landing Time</th>
+                <th>Landing Date</th>
+                <th>Gate</th>
+                <th>Cost</th>
+                <th>Aircraft</th>
             </thead>
             <tbody>
                 <%
