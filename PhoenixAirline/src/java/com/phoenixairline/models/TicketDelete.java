@@ -13,11 +13,11 @@ public class TicketDelete {
     int i;
     ResultSet resultSet;
 
-    public String DeleteTicket(String bookingId) {
+    public String DeleteTicketDetails(int ticketId, int userId) {
         con = ConnectToDB.createConnection();
         try {
             statement = con.createStatement();
-            String dltQuery = "DELETE FROM booking WHERE id='" + bookingId + "';";
+            String dltQuery = "DELETE FROM ticket WHERE id='" + ticketId + "' AND user_ticket='" + userId + "';";
 
             i = statement.executeUpdate(dltQuery);
 

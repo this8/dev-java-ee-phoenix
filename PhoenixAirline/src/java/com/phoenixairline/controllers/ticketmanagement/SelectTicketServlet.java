@@ -22,7 +22,6 @@ public class SelectTicketServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         TicketAccess ticketAccess = new TicketAccess();
-        //HttpSession session = request.getSession();
         int userId = 0; //session.getAttribute("user");
 
         HttpSession session = request.getSession();

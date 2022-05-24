@@ -72,21 +72,30 @@ public class UpdateTicketServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int ticketId = Integer.parseInt(request.getParameter("reservationId"));
-        int userId = 0;//get current userId and enter here
-        int fhacId = 0;//get fhacId according booking table
-        String passportNumber = request.getParameter("passportNumber");
-        String date = request.getParameter("date");
-        String classType = request.getParameter("class");
+        int ticketId = Integer.parseInt(request.getParameter("id"));
+        String classId = request.getParameter("class");
+        int seatId = Integer.parseInt(request.getParameter("seatNumber"));
         int seats = Integer.parseInt(request.getParameter("seats"));
-
+        float cost = Float.parseFloat(request.getParameter("cost"));
+        float price = 0;
+        switch (classId) {
+            case "101":
+                price = (float) (cost * 1.9)*seats;
+                break;
+            case "102":
+                price = (float) (cost * 1.5)*seats;
+                break;
+            default:
+                price = cost*seats;
+                break;
+        }
         HttpSession session = request.getSession();
-        userId = (int) session.getAttribute("user_id");
+        int userId = (int) session.getAttribute("user_id");
         System.out.println("user id from session " + userId);
 
         Ticket ticketBean = new Ticket();
         TicketAccess updateTicket = new TicketAccess();
-        String updateResult = updateTicket.updateTicket(ticketBean);
+        String updateResult = updateTicket.updateTicketDetails(ticketId,price,classId,seatId,userId);
         PrintWriter out = response.getWriter();
         out.println(updateResult);
     }

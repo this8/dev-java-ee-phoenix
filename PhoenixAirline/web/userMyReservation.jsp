@@ -48,13 +48,22 @@
                         <td><%=itr.next()%></td>
                         <td><%=itr.next()%></td>
                         <td><%=itr.next()%></td>
-                        <td><form action="userUpdateReservation.jsp" method="POST">
-                                <input type="hidden" name="ticket_id" value="" />
+                        
+                        <td><form action="GetSelectedTicketData" method="POST">
+                                <input type="hidden" name="ticket_id" value="<%=itr.next()%>" />
                                 <input type="submit" value="Update" />
-                            </form></td>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="DeleteTicketServlet" method="POST">
+                                <input type="hidden" name="ticket_id_delete" value="<%=itr.next()%>" />
+                                <input type="submit" value="Delete" />
+                            </form>
+                        </td>
+                        
                     </tr>
                     <%}
-                        }%>
+                            }%>
                 </tbody>
             </table>
         </div>
