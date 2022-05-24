@@ -14,7 +14,7 @@ public class AdminDCAccess {
     Statement statement = null;
     ResultSet resultSet = null;
 
-    public List getDynamicContent() {
+    public List getMonitorTable() {
         List user_details = new ArrayList();
 
         try {
@@ -49,6 +49,36 @@ public class AdminDCAccess {
         }
         return user_details;
 
+    }
+
+    public List getApproveTable() {
+        List user_details = new ArrayList();
+
+        try {
+            con = ConnectToDB.createConnection();
+            statement = con.createStatement();
+
+            resultSet = statement.executeQuery("SELECT id,first_name,last_name,role FROM user WHERE is_active=0;");
+
+//            join query and use result set metadata
+            while (resultSet.next()) {
+                int user_id = resultSet.getInt("id");
+                String first_name = resultSet.getString("first_name");
+                String last_name = resultSet.getString("last_name");
+                String role = resultSet.getString("role");
+                System.out.println(first_name);
+
+//                can add tr td to whlie loop in jsp for less lines
+                user_details.add(user_id);
+                user_details.add(first_name);
+                user_details.add(last_name);
+                user_details.add(role);
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return user_details;
     }
 
 }

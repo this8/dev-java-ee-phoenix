@@ -63,6 +63,10 @@
         <servlet-name>SearchUsers_aServlet</servlet-name>
         <servlet-class>com.phoenixairline.controllers.SearchUsers_aServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ApproveServlet</servlet-name>
+        <servlet-class>com.phoenixairline.controllers.ApproveServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddFlightInfoServlet</servlet-name>
         <url-pattern>/AddFlightInfoServlet</url-pattern>
@@ -122,6 +126,10 @@
     <servlet-mapping>
         <servlet-name>SearchUsers_aServlet</servlet-name>
         <url-pattern>/SearchUsers_aServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApproveServlet</servlet-name>
+        <url-pattern>/ApproveServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

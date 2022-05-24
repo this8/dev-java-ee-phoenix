@@ -15,15 +15,23 @@
         Welcome <%=session.getAttribute("client")%>
 
         <div style="text-align: right"><a href="<%=request.getContextPath()%>/LogoutServlet">Logout</a></div>
-        <div>
-            <form action="SelectTicketServlet" method="POST">
-                <input type="submit" value="Veiw My Reservation" />
-            </form>
-        </div>
+
+        <form action="UpdateUserServlet" method="POST">
+            <input type="submit" value="Update" />
+        </form>
+
         <div>
             <form action="ViewFlightInfoServlet" method="POST">
                 <input type="submit" value="Veiw All Flight Details" />
             </form>
         </div>
+
+        <!--        check reservations/tickets-->
+        <div>
+            <form action="SelectTicketServlet" method="POST">
+                <input type="submit" value="Veiw My Reservation" />
+            </form>
+        </div>
+
     </body>
 </html>

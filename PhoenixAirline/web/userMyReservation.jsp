@@ -52,6 +52,10 @@
                         }%>
                 </tbody>
             </table>
+            <form action="userUpdateReservation.jsp" method="POST">
+                <input type="hidden" name="ticket_id" value="" />
+                <input type="submit" value="Update" />
+            </form>
         </div>
     </body>
 </html>
